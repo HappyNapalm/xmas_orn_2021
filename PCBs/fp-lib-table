@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name JS202011SCQN)(type KiCad)(uri "${KIPRJMOD}/Footprints/JS202011SCQN .pretty")(options "")(descr ""))
+  (lib (name LL3301FF065QJ_pushbutton)(type KiCad)(uri ${KIPRJMOD}/Footprints/LL3301FF065QJ_pushbutton.pretty)(options "")(descr ""))
+)
