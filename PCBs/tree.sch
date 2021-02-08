@@ -869,10 +869,10 @@ Text GLabel 4200 3600 2    50   Output ~ 0
 Blue_Data
 Wire Wire Line
 	4200 3600 4050 3600
-Text GLabel 8400 2200 0    50   Output ~ 0
+Text GLabel 9050 2950 0    50   Output ~ 0
 Red_Data
 Wire Wire Line
-	8400 2200 8550 2200
+	9050 2950 9200 2950
 Text GLabel 4150 1750 2    50   Input ~ 0
 Shift_CLK
 Wire Wire Line
@@ -885,10 +885,10 @@ Text GLabel 4200 4250 2    50   Input ~ 0
 Shift_CLK
 Wire Wire Line
 	4200 4250 4050 4250
-Text GLabel 8400 2300 0    50   Output ~ 0
+Text GLabel 9000 1100 1    50   Output ~ 0
 Shift_CLK
 Wire Wire Line
-	8400 2300 8550 2300
+	9000 1100 9000 1250
 Text GLabel 4150 2250 2    50   Input ~ 0
 Storage_CLK
 Wire Wire Line
@@ -901,10 +901,10 @@ Text GLabel 4200 4750 2    50   Input ~ 0
 Storage_CLK
 Wire Wire Line
 	4200 4750 4050 4750
-Text GLabel 8400 2400 0    50   Output ~ 0
+Text GLabel 9100 1100 1    50   Output ~ 0
 Storage_CLK
 Wire Wire Line
-	8400 2400 8550 2400
+	9100 1100 9100 1250
 Text GLabel 2900 2300 0    50   Input ~ 0
 ~MEM_RESET~
 Text GLabel 2900 2450 0    50   Input ~ 0
@@ -953,18 +953,10 @@ Wire Wire Line
 	3000 4950 3000 4850
 Wire Wire Line
 	3000 4850 3150 4850
-Text GLabel 8350 2550 0    50   Output ~ 0
-~MEM_RESET~
-Text GLabel 9150 2950 0    50   Output ~ 0
+Text GLabel 8500 2400 0    50   Output ~ 0
 ~Output_Enable~
 Wire Wire Line
-	8350 2550 8400 2550
-Wire Wire Line
-	8400 2550 8400 2500
-Wire Wire Line
-	8400 2500 8550 2500
-Wire Wire Line
-	9150 2950 9200 2950
+	8500 2400 8550 2400
 Wire Wire Line
 	9200 2950 9200 2750
 Text GLabel 10450 1550 2    50   Output ~ 0
@@ -1020,4 +1012,12 @@ Wire Wire Line
 Connection ~ 2650 6750
 Wire Wire Line
 	2650 6750 2550 6750
+Wire Wire Line
+	8400 2500 8550 2500
+Wire Wire Line
+	8400 2550 8400 2500
+Wire Wire Line
+	8350 2550 8400 2550
+Text GLabel 8350 2550 0    50   Output ~ 0
+~MEM_RESET~
 $EndSCHEMATC
