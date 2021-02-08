@@ -1,4 +1,5 @@
 (sym_lib_table
   (lib (name pic18f45k20)(type Legacy)(uri ${KIPRJMOD}/Symbol_Libraries/pic18f45k20.lib)(options "")(descr ""))
   (lib (name NPIC6C596ADJ_shift_reg)(type Legacy)(uri ${KIPRJMOD}/Symbol_Libraries/NPIC6C596ADJ_shift_reg.lib)(options "")(descr ""))
+  (lib (name MCU_NXP_LPC804)(type Legacy)(uri ${KIPRJMOD}/Symbol_Libraries/MCU_NXP_LPC804.lib)(options "")(descr ""))
 )

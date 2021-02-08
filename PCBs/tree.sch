@@ -14,68 +14,6 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L pic18f45k20:pic18f45k20 U4
-U 1 1 6011DF0B
-P 9500 2000
-F 0 "U4" H 9450 2150 50  0000 L CNN
-F 1 "pic18f45k20" H 9300 1850 50  0000 L CNN
-F 2 "Package_QFP:LQFP-44_10x10mm_P0.8mm" H 9500 2000 50  0001 C CNN
-F 3 "" H 9500 2000 50  0001 C CNN
-	1    9500 2000
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x06_Female J1
-U 1 1 6011E5C4
-P 9350 3750
-F 0 "J1" V 9196 3998 50  0000 L CNN
-F 1 "Conn_01x06_Female" V 9287 3998 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" H 9350 3750 50  0001 C CNN
-F 3 "~" H 9350 3750 50  0001 C CNN
-	1    9350 3750
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:R_Small_US R1
-U 1 1 6011FC54
-P 9850 3200
-F 0 "R1" V 9645 3200 50  0000 C CNN
-F 1 "10K" V 9736 3200 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" H 9850 3200 50  0001 C CNN
-F 3 "~" H 9850 3200 50  0001 C CNN
-	1    9850 3200
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	9050 3550 9050 3100
-Wire Wire Line
-	9050 3100 9300 3100
-Wire Wire Line
-	9300 3100 9300 2750
-Wire Wire Line
-	9150 3550 9150 3150
-Wire Wire Line
-	9150 3150 9400 3150
-Wire Wire Line
-	9400 3150 9400 2750
-Wire Wire Line
-	9250 3550 9250 3200
-Wire Wire Line
-	9250 3200 9500 3200
-Wire Wire Line
-	9500 3200 9500 2750
-Wire Wire Line
-	9600 2750 9600 3200
-Wire Wire Line
-	9600 3200 9750 3200
-Connection ~ 9600 3200
-Wire Wire Line
-	9600 3200 9600 3300
-Wire Wire Line
-	9600 3300 9550 3300
-Wire Wire Line
-	9550 3300 9550 3550
-$Comp
 L Device:LED_RGBA D7
 U 1 1 6012B9AF
 P 7350 3150
@@ -253,26 +191,6 @@ Wire Wire Line
 Connection ~ 10000 4500
 Wire Wire Line
 	10000 4500 10500 4500
-Text GLabel 8250 2100 0    50   Input ~ 0
-3v3
-Wire Wire Line
-	8250 2100 8550 2100
-Text GLabel 10650 1950 2    50   Input ~ 0
-3v3
-Wire Wire Line
-	10650 1950 10350 1950
-Text GLabel 10250 3200 2    50   Input ~ 0
-3v3
-Wire Wire Line
-	10250 3200 9950 3200
-Text GLabel 8250 2000 0    50   Input ~ 0
-GND
-Wire Wire Line
-	8250 2000 8550 2000
-Text GLabel 10650 1850 2    50   Input ~ 0
-GND
-Wire Wire Line
-	10650 1850 10350 1850
 Text GLabel 4300 1650 2    50   Input ~ 0
 GND
 Wire Wire Line
@@ -321,14 +239,6 @@ Wire Wire Line
 	7650 4650 7650 4950
 Wire Wire Line
 	7650 4950 7550 4950
-Text GLabel 9450 3450 1    50   Input ~ 0
-3v3
-Wire Wire Line
-	9450 3450 9450 3550
-Text GLabel 9350 3450 1    50   Input ~ 0
-GND
-Wire Wire Line
-	9350 3450 9350 3550
 $Comp
 L Device:Battery_Cell BT1
 U 1 1 6013D481
@@ -869,10 +779,6 @@ Text GLabel 4200 3600 2    50   Output ~ 0
 Blue_Data
 Wire Wire Line
 	4200 3600 4050 3600
-Text GLabel 9050 2950 0    50   Output ~ 0
-Red_Data
-Wire Wire Line
-	9050 2950 9200 2950
 Text GLabel 4150 1750 2    50   Input ~ 0
 Shift_CLK
 Wire Wire Line
@@ -885,10 +791,6 @@ Text GLabel 4200 4250 2    50   Input ~ 0
 Shift_CLK
 Wire Wire Line
 	4200 4250 4050 4250
-Text GLabel 9000 1100 1    50   Output ~ 0
-Shift_CLK
-Wire Wire Line
-	9000 1100 9000 1250
 Text GLabel 4150 2250 2    50   Input ~ 0
 Storage_CLK
 Wire Wire Line
@@ -901,10 +803,6 @@ Text GLabel 4200 4750 2    50   Input ~ 0
 Storage_CLK
 Wire Wire Line
 	4200 4750 4050 4750
-Text GLabel 9100 1100 1    50   Output ~ 0
-Storage_CLK
-Wire Wire Line
-	9100 1100 9100 1250
 Text GLabel 2900 2300 0    50   Input ~ 0
 ~MEM_RESET~
 Text GLabel 2900 2450 0    50   Input ~ 0
@@ -953,16 +851,6 @@ Wire Wire Line
 	3000 4950 3000 4850
 Wire Wire Line
 	3000 4850 3150 4850
-Text GLabel 8500 2400 0    50   Output ~ 0
-~Output_Enable~
-Wire Wire Line
-	8500 2400 8550 2400
-Wire Wire Line
-	9200 2950 9200 2750
-Text GLabel 10450 1550 2    50   Output ~ 0
-HB
-Wire Wire Line
-	10450 1550 10350 1550
 $Comp
 L Device:R_Pack04 RN1
 U 1 1 602C2C14
@@ -1000,10 +888,6 @@ GND
 Text GLabel 2650 6350 1    50   Output ~ 0
 BT1
 Wire Wire Line
-	9900 1250 9900 1000
-Text GLabel 9900 1000 1    50   Input ~ 0
-BT1
-Wire Wire Line
 	3100 6750 3650 6750
 Wire Wire Line
 	2700 6750 2650 6750
@@ -1012,12 +896,15 @@ Wire Wire Line
 Connection ~ 2650 6750
 Wire Wire Line
 	2650 6750 2550 6750
-Wire Wire Line
-	8400 2500 8550 2500
-Wire Wire Line
-	8400 2550 8400 2500
-Wire Wire Line
-	8350 2550 8400 2550
-Text GLabel 8350 2550 0    50   Output ~ 0
-~MEM_RESET~
+$Comp
+L MCU_NXP_LPC804:LPC804-TSSOP24 U?
+U 1 1 6024220D
+P 9500 1450
+F 0 "U?" H 9500 2281 50  0000 C CNN
+F 1 "LPC804-TSSOP24" H 9500 2190 50  0000 C CNN
+F 2 "" H 8800 1450 50  0001 C CNN
+F 3 "" H 8800 1450 50  0001 C CNN
+	1    9500 1450
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
