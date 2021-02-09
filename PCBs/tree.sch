@@ -1020,4 +1020,51 @@ Wire Wire Line
 	8350 2550 8400 2550
 Text GLabel 8350 2550 0    50   Output ~ 0
 ~MEM_RESET~
+$Comp
+L Connector_Generic:Conn_02x05_Odd_Even J2
+U 1 1 60231BAE
+P 9300 5800
+F 0 "J2" H 9350 6217 50  0000 C CNN
+F 1 "Conn_02x05_Odd_Even" H 9350 6126 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical" H 9300 5800 50  0001 C CNN
+F 3 "~" H 9300 5800 50  0001 C CNN
+	1    9300 5800
+	1    0    0    -1  
+$EndComp
+Text GLabel 9050 5800 0    50   Output ~ 0
+~Output_Enable~
+Wire Wire Line
+	9050 5800 9100 5800
+Wire Wire Line
+	8950 5900 9100 5900
+Wire Wire Line
+	8950 5950 8950 5900
+Wire Wire Line
+	8900 5950 8950 5950
+Text GLabel 8900 5950 0    50   Output ~ 0
+~MEM_RESET~
+Text GLabel 9750 5800 2    50   Output ~ 0
+Shift_CLK
+Wire Wire Line
+	9750 5800 9600 5800
+Text GLabel 9750 5900 2    50   Output ~ 0
+Storage_CLK
+Wire Wire Line
+	9750 5900 9600 5900
+Text GLabel 9750 5700 2    50   Output ~ 0
+Red_Data
+Wire Wire Line
+	9750 5700 9600 5700
+Text GLabel 9750 5600 2    50   Output ~ 0
+HB
+Wire Wire Line
+	9750 5600 9600 5600
+Text GLabel 9900 6000 2    50   Input ~ 0
+GND
+Wire Wire Line
+	9900 6000 9600 6000
+Text GLabel 8800 5600 0    50   Input ~ 0
+3v3
+Wire Wire Line
+	8800 5600 9100 5600
 $EndSCHEMATC
