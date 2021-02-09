@@ -745,20 +745,16 @@ Wire Wire Line
 $Comp
 L Device:LED D1
 U 1 1 6032CD9A
-P 3300 7300
-F 0 "D1" V 3339 7183 50  0000 R CNN
-F 1 "LED" V 3248 7183 50  0000 R CNN
-F 2 "LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 3300 7300 50  0001 C CNN
-F 3 "~" H 3300 7300 50  0001 C CNN
-	1    3300 7300
+P 10450 5850
+F 0 "D1" V 10489 5733 50  0000 R CNN
+F 1 "LED" V 10398 5733 50  0000 R CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 10450 5850 50  0001 C CNN
+F 3 "~" H 10450 5850 50  0001 C CNN
+	1    10450 5850
 	0    -1   -1   0   
 $EndComp
-Text GLabel 2600 7050 0    50   Input ~ 0
-HB
 Wire Wire Line
-	2600 7050 2700 7050
-Wire Wire Line
-	3300 7050 3300 7150
+	10450 5600 10450 5700
 Text GLabel 2950 1750 0    50   Input ~ 0
 Red_Data
 Wire Wire Line
@@ -854,57 +850,207 @@ Wire Wire Line
 $Comp
 L Device:R_Pack04 RN1
 U 1 1 602C2C14
-P 2900 6950
-F 0 "RN1" V 2483 6950 50  0000 C CNN
-F 1 "R_Pack04" V 2574 6950 50  0000 C CNN
-F 2 "Resistor_SMD:R_Array_Convex_4x0603" V 3175 6950 50  0001 C CNN
-F 3 "~" H 2900 6950 50  0001 C CNN
-	1    2900 6950
+P 10050 5500
+F 0 "RN1" V 9633 5500 50  0000 C CNN
+F 1 "R_Pack04" V 9724 5500 50  0000 C CNN
+F 2 "Resistor_SMD:R_Array_Convex_4x0603" V 10325 5500 50  0001 C CNN
+F 3 "~" H 10050 5500 50  0001 C CNN
+	1    10050 5500
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	3300 7050 3100 7050
-Text GLabel 3600 7450 2    50   Input ~ 0
-GND
+	10450 5600 10250 5600
+Text GLabel 10750 6000 2    50   Input ~ 0
+HB
 Wire Wire Line
-	3600 7450 3300 7450
-Text GLabel 2000 6750 0    50   Input ~ 0
+	10750 6000 10450 6000
+Text GLabel 9150 5300 0    50   Input ~ 0
 3v3
 Wire Wire Line
-	2000 6750 2150 6750
+	9150 5300 9300 5300
 $Comp
 L Switch:SW_SPST SW2
 U 1 1 6037EFD6
-P 2350 6750
-F 0 "SW2" H 2350 6985 50  0000 C CNN
-F 1 "SW_SPST" H 2350 6894 50  0000 C CNN
-F 2 "LL3301FF065QJ_pushbutton:LL3301FF065QJ" H 2350 6750 50  0001 C CNN
-F 3 "~" H 2350 6750 50  0001 C CNN
-	1    2350 6750
+P 9500 5300
+F 0 "SW2" H 9500 5535 50  0000 C CNN
+F 1 "SW_SPST" H 9500 5444 50  0000 C CNN
+F 2 "LL3301FF065QJ_pushbutton:LL3301FF065QJ" H 9500 5300 50  0001 C CNN
+F 3 "~" H 9500 5300 50  0001 C CNN
+	1    9500 5300
 	1    0    0    -1  
 $EndComp
-Text GLabel 3650 6750 2    50   Input ~ 0
+Text GLabel 10800 5300 2    50   Input ~ 0
 GND
-Text GLabel 2650 6350 1    50   Output ~ 0
+Text GLabel 9800 4900 1    50   Output ~ 0
 BT1
 Wire Wire Line
-	3100 6750 3650 6750
+	10250 5300 10800 5300
 Wire Wire Line
-	2700 6750 2650 6750
+	9850 5300 9800 5300
 Wire Wire Line
-	2650 6350 2650 6750
-Connection ~ 2650 6750
+	9800 4900 9800 5300
+Connection ~ 9800 5300
 Wire Wire Line
-	2650 6750 2550 6750
+	9800 5300 9700 5300
 $Comp
-L MCU_NXP_LPC804:LPC804-TSSOP24 U?
+L MCU_NXP_LPC804:LPC804-TSSOP24 U4
 U 1 1 6024220D
-P 9500 1450
-F 0 "U?" H 9500 2281 50  0000 C CNN
-F 1 "LPC804-TSSOP24" H 9500 2190 50  0000 C CNN
-F 2 "" H 8800 1450 50  0001 C CNN
-F 3 "" H 8800 1450 50  0001 C CNN
-	1    9500 1450
+P 3450 6550
+F 0 "U4" H 3450 7381 50  0000 C CNN
+F 1 "LPC804-TSSOP24" H 3450 7290 50  0000 C CNN
+F 2 "" H 2750 6550 50  0001 C CNN
+F 3 "" H 2750 6550 50  0001 C CNN
+	1    3450 6550
 	1    0    0    -1  
 $EndComp
+$Comp
+L Connector_Generic:Conn_02x05_Odd_Even J1
+U 1 1 6022D914
+P 6400 6200
+F 0 "J1" H 6450 6617 50  0000 C CNN
+F 1 "Conn_02x05_Odd_Even" H 6450 6526 50  0000 C CNN
+F 2 "" H 6400 6200 50  0001 C CNN
+F 3 "~" H 6400 6200 50  0001 C CNN
+	1    6400 6200
+	1    0    0    -1  
+$EndComp
+Text GLabel 5900 6000 0    50   Input ~ 0
+3v3
+Wire Wire Line
+	5900 6000 6200 6000
+Text GLabel 5900 6400 0    50   Input ~ 0
+GND
+Wire Wire Line
+	5900 6400 6050 6400
+NoConn ~ 6200 6300
+Wire Wire Line
+	6200 6100 6050 6100
+Wire Wire Line
+	6050 6100 6050 6200
+Connection ~ 6050 6400
+Wire Wire Line
+	6050 6400 6200 6400
+Wire Wire Line
+	6200 6200 6050 6200
+Connection ~ 6050 6200
+Wire Wire Line
+	6050 6200 6050 6400
+NoConn ~ 6700 6200
+NoConn ~ 6700 6300
+Text GLabel 7150 5750 2    50   Input ~ 0
+SWDIO_PIO0_2
+Wire Wire Line
+	6700 6000 6950 6000
+Text GLabel 7200 6250 2    50   Input ~ 0
+SWCLK_PIO0_3
+Wire Wire Line
+	6700 6100 6950 6100
+Text GLabel 6950 6400 2    50   Input ~ 0
+!TRST_P0_5
+Wire Wire Line
+	6700 6400 6950 6400
+Text GLabel 2000 6900 0    50   Input ~ 0
+SWDIO_PIO0_2
+Wire Wire Line
+	2250 6900 2000 6900
+Text GLabel 2000 6800 0    50   Input ~ 0
+SWCLK_PIO0_3
+Wire Wire Line
+	2250 6800 2000 6800
+Text GLabel 2000 6600 0    50   Input ~ 0
+!TRST_P0_5
+Wire Wire Line
+	2250 6600 2000 6600
+Wire Wire Line
+	6950 6000 6950 5750
+Wire Wire Line
+	6950 5750 7150 5750
+$Comp
+L Device:R_US R1
+U 1 1 6031BFCF
+P 6950 5600
+F 0 "R1" H 7018 5646 50  0000 L CNN
+F 1 "10K" H 7018 5555 50  0000 L CNN
+F 2 "" V 6990 5590 50  0001 C CNN
+F 3 "~" H 6950 5600 50  0001 C CNN
+	1    6950 5600
+	1    0    0    -1  
+$EndComp
+Connection ~ 6950 5750
+Wire Wire Line
+	6950 6100 6950 6250
+Wire Wire Line
+	6950 6250 7100 6250
+$Comp
+L Device:R_US R2
+U 1 1 6032D2AD
+P 7100 6100
+F 0 "R2" H 7168 6146 50  0000 L CNN
+F 1 "10K" H 7168 6055 50  0000 L CNN
+F 2 "" V 7140 6090 50  0001 C CNN
+F 3 "~" H 7100 6100 50  0001 C CNN
+	1    7100 6100
+	1    0    0    -1  
+$EndComp
+Text GLabel 6850 5450 0    50   Input ~ 0
+3v3
+Wire Wire Line
+	6850 5450 6950 5450
+Text GLabel 7200 5950 2    50   Input ~ 0
+3v3
+Wire Wire Line
+	7200 5950 7100 5950
+Connection ~ 7100 6250
+Wire Wire Line
+	7100 6250 7200 6250
+Text GLabel 3550 5900 2    50   Input ~ 0
+3v3
+Wire Wire Line
+	3550 5900 3450 5900
+Text GLabel 3600 7300 2    50   Input ~ 0
+GND
+Wire Wire Line
+	3600 7300 3450 7300
+Text GLabel 2100 6100 0    50   Input ~ 0
+Red_Data
+Wire Wire Line
+	2100 6100 2250 6100
+Text GLabel 2100 6300 0    50   Input ~ 0
+Shift_CLK
+Wire Wire Line
+	2100 6300 2250 6300
+Text GLabel 2100 6200 0    50   Input ~ 0
+Storage_CLK
+Wire Wire Line
+	2100 6200 2250 6200
+Text GLabel 4850 6150 2    50   Input ~ 0
+~MEM_RESET~
+Wire Wire Line
+	4850 6150 4800 6150
+Wire Wire Line
+	4800 6150 4800 6200
+Wire Wire Line
+	4800 6200 4650 6200
+Text GLabel 4800 7050 2    50   Input ~ 0
+~Output_Enable~
+Wire Wire Line
+	4800 7050 4750 7050
+Wire Wire Line
+	4750 7050 4750 7100
+Wire Wire Line
+	4650 7100 4750 7100
+Text GLabel 5050 6400 2    50   Output ~ 0
+BT1
+Wire Wire Line
+	5050 6400 4650 6400
+Text GLabel 4750 6900 2    50   Input ~ 0
+HB
+Wire Wire Line
+	4750 6900 4650 6900
+Text GLabel 9700 5600 0    50   Input ~ 0
+3v3
+Wire Wire Line
+	9700 5600 9850 5600
+Text Notes 1100 5600 0    50   ~ 0
+Outputs are open drain! Add additional circuitry
 $EndSCHEMATC
