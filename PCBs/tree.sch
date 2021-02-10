@@ -898,7 +898,7 @@ U 1 1 6024220D
 P 3450 6550
 F 0 "U4" H 3450 7381 50  0000 C CNN
 F 1 "LPC804-TSSOP24" H 3450 7290 50  0000 C CNN
-F 2 "" H 2750 6550 50  0001 C CNN
+F 2 "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm" H 2750 6550 50  0001 C CNN
 F 3 "" H 2750 6550 50  0001 C CNN
 	1    3450 6550
 	1    0    0    -1  
@@ -909,7 +909,7 @@ U 1 1 6022D914
 P 6400 6200
 F 0 "J1" H 6450 6617 50  0000 C CNN
 F 1 "Conn_02x05_Odd_Even" H 6450 6526 50  0000 C CNN
-F 2 "" H 6400 6200 50  0001 C CNN
+F 2 "Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical" H 6400 6200 50  0001 C CNN
 F 3 "~" H 6400 6200 50  0001 C CNN
 	1    6400 6200
 	1    0    0    -1  
@@ -971,7 +971,7 @@ U 1 1 6031BFCF
 P 6950 5600
 F 0 "R1" H 7018 5646 50  0000 L CNN
 F 1 "10K" H 7018 5555 50  0000 L CNN
-F 2 "" V 6990 5590 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 6990 5590 50  0001 C CNN
 F 3 "~" H 6950 5600 50  0001 C CNN
 	1    6950 5600
 	1    0    0    -1  
@@ -987,7 +987,7 @@ U 1 1 6032D2AD
 P 7100 6100
 F 0 "R2" H 7168 6146 50  0000 L CNN
 F 1 "10K" H 7168 6055 50  0000 L CNN
-F 2 "" V 7140 6090 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 7140 6090 50  0001 C CNN
 F 3 "~" H 7100 6100 50  0001 C CNN
 	1    7100 6100
 	1    0    0    -1  
@@ -1023,20 +1023,20 @@ Text GLabel 2100 6200 0    50   Input ~ 0
 Storage_CLK
 Wire Wire Line
 	2100 6200 2250 6200
-Text GLabel 4850 6150 2    50   Input ~ 0
+Text GLabel 4850 7100 2    50   Input ~ 0
 ~MEM_RESET~
 Wire Wire Line
-	4850 6150 4800 6150
+	4850 7100 4800 7100
 Wire Wire Line
-	4800 6150 4800 6200
+	4800 7100 4800 7000
 Wire Wire Line
-	4800 6200 4650 6200
-Text GLabel 4800 7050 2    50   Input ~ 0
+	4800 7000 4650 7000
+Text GLabel 4850 7250 2    50   Input ~ 0
 ~Output_Enable~
 Wire Wire Line
-	4800 7050 4750 7050
+	4850 7250 4750 7250
 Wire Wire Line
-	4750 7050 4750 7100
+	4750 7250 4750 7100
 Wire Wire Line
 	4650 7100 4750 7100
 Text GLabel 5050 6400 2    50   Output ~ 0
@@ -1053,4 +1053,51 @@ Wire Wire Line
 	9700 5600 9850 5600
 Text Notes 1100 5600 0    50   ~ 0
 Outputs are open drain! Add additional circuitry
+$Comp
+L Connector_Generic:Conn_02x05_Odd_Even J2
+U 1 1 602498E0
+P 8750 6200
+F 0 "J2" H 8800 6617 50  0000 C CNN
+F 1 "Conn_02x05_Odd_Even" H 8800 6526 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical" H 8750 6200 50  0001 C CNN
+F 3 "~" H 8750 6200 50  0001 C CNN
+	1    8750 6200
+	1    0    0    -1  
+$EndComp
+Text GLabel 8400 6100 0    50   Input ~ 0
+Red_Data
+Wire Wire Line
+	8400 6100 8550 6100
+Text GLabel 8400 6300 0    50   Input ~ 0
+Shift_CLK
+Wire Wire Line
+	8400 6300 8550 6300
+Text GLabel 8400 6200 0    50   Input ~ 0
+Storage_CLK
+Wire Wire Line
+	8400 6200 8550 6200
+Text GLabel 9150 6000 2    50   Input ~ 0
+HB
+Wire Wire Line
+	9150 6000 9050 6000
+Text GLabel 9200 6400 2    50   Input ~ 0
+GND
+Wire Wire Line
+	9200 6400 9050 6400
+Text GLabel 8250 6000 0    50   Input ~ 0
+3v3
+Wire Wire Line
+	8250 6000 8550 6000
+Text GLabel 9400 6300 2    50   Input ~ 0
+~Output_Enable~
+Wire Wire Line
+	9050 6300 9400 6300
+Text GLabel 9400 6150 2    50   Input ~ 0
+~MEM_RESET~
+Wire Wire Line
+	9400 6150 9350 6150
+Wire Wire Line
+	9350 6150 9350 6200
+Wire Wire Line
+	9350 6200 9050 6200
 $EndSCHEMATC
