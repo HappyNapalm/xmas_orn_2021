@@ -1,0 +1,1642 @@
+
+
+Microchip MPLAB XC8 Assembler V2.10 build 88905656 
+                                                                                               Fri Feb 26 21:55:36 2021
+
+Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
+     1                           	processor	18F45K20
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	flic
+     5                           	psect	idataCOMRAM,global,class=CODE,delta=1,noexec
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
+     8                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
+     9                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
+    10                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    19                           	psect	text9,global,reloc=2,class=CODE,delta=1,inline
+    20                           	psect	text10,global,reloc=2,class=CODE,delta=1
+    21                           	psect	intcode,global,reloc=2,class=CODE,delta=1
+    22                           	psect	text12,global,reloc=2,class=CODE,delta=1
+    23                           	psect	text13,global,reloc=2,class=CODE,delta=1,inline
+    24                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    25                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    26                           	psect	temp,global,ovrld,common,class=COMRAM,space=1,delta=1
+    27  0000                     
+    28                           ; Version 2.10
+    29                           ; Generated 31/07/2019 GMT
+    30                           ; 
+    31                           ; Copyright © 2019, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    32                           ; All rights reserved.
+    33                           ; 
+    34                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    35                           ; 
+    36                           ; Redistribution and use in source and binary forms, with or without modification, are
+    37                           ; permitted provided that the following conditions are met:
+    38                           ; 
+    39                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    40                           ;        conditions and the following disclaimer.
+    41                           ; 
+    42                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    43                           ;        of conditions and the following disclaimer in the documentation and/or other
+    44                           ;        materials provided with the distribution.
+    45                           ; 
+    46                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    47                           ;        software without specific prior written permission.
+    48                           ; 
+    49                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    50                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    51                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    52                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    53                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    54                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    55                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    56                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    57                           ; 
+    58                           ; 
+    59                           ; Code-generator required, PIC18F45K20 Definitions
+    60                           ; 
+    61                           ; SFR Addresses
+    62  0000                     
+    63                           	psect	idataCOMRAM
+    64  0002BE                     __pidataCOMRAM:
+    65                           	opt callstack 0
+    66                           
+    67                           ;initializer for _astInputs
+    68  0002BE  82                 	db	130
+    69  0002BF  0F                 	db	15
+    70  0002C0  01                 	db	1
+    71                           
+    72                           ;initializer for _astOutputs
+    73  0002C1  8B                 	db	139
+    74  0002C2  0F                 	db	15
+    75  0002C3  00                 	db	0
+    76  0002C4  8B                 	db	139
+    77  0002C5  0F                 	db	15
+    78  0002C6  05                 	db	5
+    79  0002C7  8B                 	db	139
+    80  0002C8  0F                 	db	15
+    81  0002C9  06                 	db	6
+    82  0002CA  8A                 	db	138
+    83  0002CB  0F                 	db	15
+    84  0002CC  02                 	db	2
+    85  0002CD  8A                 	db	138
+    86  0002CE  0F                 	db	15
+    87  0002CF  03                 	db	3
+    88  0002D0  8A                 	db	138
+    89  0002D1  0F                 	db	15
+    90  0002D2  04                 	db	4
+    91  0000                     _T3CONbits	set	4017
+    92  0000                     _T0CONbits	set	4053
+    93  0000                     _INTCONbits	set	4082
+    94  0000                     _TMR3L	set	4018
+    95  0000                     _TMR3H	set	4019
+    96  0000                     _TMR0L	set	4054
+    97  0000                     _TMR0H	set	4055
+    98  0000                     _T3CON	set	4017
+    99  0000                     _OSCCON	set	4051
+   100  0000                     _T0CON	set	4053
+   101  0000                     _TRISBbits	set	3987
+   102  0000                     _TRISCbits	set	3988
+   103  0000                     _LATB	set	3978
+   104  0000                     _LATC	set	3979
+   105  0000                     _PORTC	set	3970
+   106  0000                     _TMR3IF	set	32009
+   107  0000                     _TMR0IF	set	32658
+   108                           
+   109                           ; #config settings
+   110  0000                     
+   111                           	psect	cinit
+   112  00026E                     __pcinit:
+   113                           	opt callstack 0
+   114  00026E                     start_initialization:
+   115                           	opt callstack 0
+   116  00026E                     __initialization:
+   117                           	opt callstack 0
+   118                           
+   119                           ; Initialize objects allocated to COMRAM (21 bytes)
+   120                           ; load TBLPTR registers with __pidataCOMRAM
+   121  00026E  0EBE               	movlw	low __pidataCOMRAM
+   122  000270  6EF6               	movwf	tblptrl,c
+   123  000272  0E02               	movlw	high __pidataCOMRAM
+   124  000274  6EF7               	movwf	tblptrh,c
+   125  000276  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+   126  000278  6EF8               	movwf	tblptru,c
+   127  00027A  EE00  F001         	lfsr	0,__pdataCOMRAM
+   128  00027E  EE10 F015          	lfsr	1,21
+   129  000282                     copy_data0:
+   130  000282  0009               	tblrd		*+
+   131  000284  CFF5 FFEE          	movff	tablat,postinc0
+   132  000288  50E5               	movf	postdec1,w,c
+   133  00028A  50E1               	movf	fsr1l,w,c
+   134  00028C  E1FA               	bnz	copy_data0
+   135                           
+   136                           ; Clear objects allocated to COMRAM (10 bytes)
+   137  00028E  EE00  F024         	lfsr	0,__pbssCOMRAM
+   138  000292  0E0A               	movlw	10
+   139  000294                     clear_0:
+   140  000294  6AEE               	clrf	postinc0,c
+   141  000296  06E8               	decf	wreg,f,c
+   142  000298  E1FD               	bnz	clear_0
+   143  00029A                     end_of_initialization:
+   144                           	opt callstack 0
+   145  00029A                     __end_of__initialization:
+   146                           	opt callstack 0
+   147  00029A  902E               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
+   148  00029C  922E               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+   149  00029E  0100               	movlb	0
+   150  0002A0  EF6A  F001         	goto	_main	;jump to C main() function
+   151                           
+   152                           	psect	bssCOMRAM
+   153  000024                     __pbssCOMRAM:
+   154                           	opt callstack 0
+   155  000024                     heartbeat@uwStartTime:
+   156                           	opt callstack 0
+   157  000024                     	ds	2
+   158  000026                     testing@nbFirst:
+   159                           	opt callstack 0
+   160  000026                     	ds	1
+   161  000027                     testing@ucLocalTicks:
+   162                           	opt callstack 0
+   163  000027                     	ds	1
+   164  000028                     testing@b:
+   165                           	opt callstack 0
+   166  000028                     	ds	1
+   167  000029                     heartbeat@ucOverFlow:
+   168                           	opt callstack 0
+   169  000029                     	ds	1
+   170  00002A                     heartbeat@nbFirst:
+   171                           	opt callstack 0
+   172  00002A                     	ds	1
+   173  00002B                     _gucTestBit:
+   174                           	opt callstack 0
+   175  00002B                     	ds	1
+   176  00002C                     _guc_3_Tick:
+   177                           	opt callstack 0
+   178  00002C                     	ds	1
+   179  00002D                     _gbTick:
+   180                           	opt callstack 0
+   181  00002D                     	ds	1
+   182                           
+   183                           	psect	dataCOMRAM
+   184  000001                     __pdataCOMRAM:
+   185                           	opt callstack 0
+   186  000001                     _astInputs:
+   187                           	opt callstack 0
+   188  000001                     	ds	3
+   189  000004                     _astOutputs:
+   190                           	opt callstack 0
+   191  000004                     	ds	18
+   192                           
+   193                           	psect	cstackCOMRAM
+   194  000016                     __pcstackCOMRAM:
+   195                           	opt callstack 0
+   196  000016                     ?_get_Time:
+   197                           	opt callstack 0
+   198  000016                     set_IO@IO:
+   199                           	opt callstack 0
+   200  000016                     get_IO@IO:
+   201                           	opt callstack 0
+   202                           
+   203                           ; 2 bytes @ 0x0
+   204  000016                     	ds	2
+   205  000018                     ??_get_Time:
+   206  000018                     set_IO@item:
+   207                           	opt callstack 0
+   208  000018                     get_IO@item:
+   209                           	opt callstack 0
+   210                           
+   211                           ; 1 bytes @ 0x2
+   212  000018                     	ds	1
+   213  000019                     ??_get_IO:
+   214  000019                     set_IO@bValue:
+   215                           	opt callstack 0
+   216                           
+   217                           ; 1 bytes @ 0x3
+   218  000019                     	ds	1
+   219  00001A                     ??_set_IO:
+   220  00001A                     bTimeUp@StartTime:
+   221                           	opt callstack 0
+   222                           
+   223                           ; 2 bytes @ 0x4
+   224  00001A                     	ds	2
+   225  00001C                     bTimeUp@Period:
+   226                           	opt callstack 0
+   227                           
+   228                           ; 2 bytes @ 0x6
+   229  00001C                     	ds	2
+   230  00001E                     ??_bTimeUp:
+   231                           
+   232                           ; 1 bytes @ 0x8
+   233  00001E                     	ds	1
+   234  00001F                     set_IO@ucLocal:
+   235                           	opt callstack 0
+   236                           
+   237                           ; 2 bytes @ 0x9
+   238  00001F                     	ds	1
+   239  000020                     bTimeUp@b:
+   240                           	opt callstack 0
+   241                           
+   242                           ; 1 bytes @ 0xA
+   243  000020                     	ds	1
+   244  000021                     bTimeUp@CurrentTime:
+   245                           	opt callstack 0
+   246                           
+   247                           ; 2 bytes @ 0xB
+   248  000021                     	ds	2
+   249  000023                     heartbeat@bHeartState:
+   250                           	opt callstack 0
+   251                           
+   252                           ; 1 bytes @ 0xD
+   253  000023                     	ds	1
+   254  000024                     
+   255                           ; 1 bytes @ 0xE
+   256 ;;
+   257 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   258 ;;
+   259 ;; *************** function _main *****************
+   260 ;; Defined at:
+   261 ;;		line 47 in file "main.c"
+   262 ;; Parameters:    Size  Location     Type
+   263 ;;		None
+   264 ;; Auto vars:     Size  Location     Type
+   265 ;;		None
+   266 ;; Return value:  Size  Location     Type
+   267 ;;                  1    wreg      void 
+   268 ;; Registers used:
+   269 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   270 ;; Tracked objects:
+   271 ;;		On entry : 0/0
+   272 ;;		On exit  : 0/0
+   273 ;;		Unchanged: 0/0
+   274 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   275 ;;      Params:         0       0       0       0       0       0       0
+   276 ;;      Locals:         0       0       0       0       0       0       0
+   277 ;;      Temps:          0       0       0       0       0       0       0
+   278 ;;      Totals:         0       0       0       0       0       0       0
+   279 ;;Total ram usage:        0 bytes
+   280 ;; Hardware stack levels required when called:    5
+   281 ;; This function calls:
+   282 ;;		_clr_LEDs
+   283 ;;		_heartbeat
+   284 ;;		_setup
+   285 ;; This function is called by:
+   286 ;;		Startup code after reset
+   287 ;; This function uses a non-reentrant model
+   288 ;;
+   289                           
+   290                           	psect	text0
+   291  0002D4                     __ptext0:
+   292                           	opt callstack 0
+   293  0002D4                     _main:
+   294                           	opt callstack 26
+   295  0002D4                     
+   296                           ;main.c: 49:     setup();
+   297  0002D4  EC52  F001         	call	_setup	;wreg free
+   298  0002D8                     
+   299                           ;main.c: 50:     clr_LEDs();
+   300  0002D8  EC95  F001         	call	_clr_LEDs	;wreg free
+   301  0002DC                     l975:
+   302                           
+   303                           ;main.c: 59:     {;main.c: 60:         heartbeat();
+   304  0002DC  EC82  F000         	call	_heartbeat	;wreg free
+   305  0002E0  EF6E  F001         	goto	l975
+   306  0002E4  EF1E  F000         	goto	start
+   307  0002E8                     __end_of_main:
+   308                           	opt callstack 0
+   309                           
+   310 ;; *************** function _setup *****************
+   311 ;; Defined at:
+   312 ;;		line 139 in file "setup.c"
+   313 ;; Parameters:    Size  Location     Type
+   314 ;;		None
+   315 ;; Auto vars:     Size  Location     Type
+   316 ;;		None
+   317 ;; Return value:  Size  Location     Type
+   318 ;;                  1    wreg      void 
+   319 ;; Registers used:
+   320 ;;		wreg, status,2, cstack
+   321 ;; Tracked objects:
+   322 ;;		On entry : 0/0
+   323 ;;		On exit  : 0/0
+   324 ;;		Unchanged: 0/0
+   325 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   326 ;;      Params:         0       0       0       0       0       0       0
+   327 ;;      Locals:         0       0       0       0       0       0       0
+   328 ;;      Temps:          0       0       0       0       0       0       0
+   329 ;;      Totals:         0       0       0       0       0       0       0
+   330 ;;Total ram usage:        0 bytes
+   331 ;; Hardware stack levels used:    1
+   332 ;; Hardware stack levels required when called:    3
+   333 ;; This function calls:
+   334 ;;		_IO_setup
+   335 ;;		_Timer_and_Interrupt_setup
+   336 ;;		_all_LEDs
+   337 ;; This function is called by:
+   338 ;;		_main
+   339 ;; This function uses a non-reentrant model
+   340 ;;
+   341                           
+   342                           	psect	text1
+   343  0002A4                     __ptext1:
+   344                           	opt callstack 0
+   345  0002A4                     _setup:
+   346                           	opt callstack 27
+   347  0002A4                     
+   348                           ;setup.c: 141:     INTCONbits.GIE = 0;
+   349  0002A4  9EF2               	bcf	242,7,c	;volatile
+   350  0002A6                     
+   351                           ;setup.c: 142:     IO_setup();
+   352  0002A6  EC74  F001         	call	_IO_setup	;wreg free
+   353  0002AA                     
+   354                           ;setup.c: 144:     Timer_and_Interrupt_setup();
+   355  0002AA  EC7C  F001         	call	_Timer_and_Interrupt_setup	;wreg free
+   356  0002AE                     
+   357                           ;setup.c: 145:     INTCONbits.GIE = 1;
+   358  0002AE  8EF2               	bsf	242,7,c	;volatile
+   359  0002B0                     
+   360                           ;setup.c: 146:     INTCONbits.PEIE = 1;
+   361  0002B0  8CF2               	bsf	242,6,c	;volatile
+   362  0002B2                     
+   363                           ;setup.c: 147:     INTCONbits.TMR0IE = 1;
+   364  0002B2  8AF2               	bsf	242,5,c	;volatile
+   365  0002B4                     
+   366                           ;setup.c: 148:     T0CONbits.TMR0ON = 1;
+   367  0002B4  8ED5               	bsf	213,7,c	;volatile
+   368  0002B6                     
+   369                           ;setup.c: 149:     T3CONbits.TMR3ON = 0;
+   370  0002B6  90B1               	bcf	177,0,c	;volatile
+   371  0002B8                     
+   372                           ;setup.c: 150:     all_LEDs();
+   373  0002B8  EC94  F001         	call	_all_LEDs	;wreg free
+   374  0002BC  0012               	return		;funcret
+   375  0002BE                     __end_of_setup:
+   376                           	opt callstack 0
+   377                           
+   378 ;; *************** function _all_LEDs *****************
+   379 ;; Defined at:
+   380 ;;		line 17 in file "leds.c"
+   381 ;; Parameters:    Size  Location     Type
+   382 ;;		None
+   383 ;; Auto vars:     Size  Location     Type
+   384 ;;		None
+   385 ;; Return value:  Size  Location     Type
+   386 ;;                  1    wreg      void 
+   387 ;; Registers used:
+   388 ;;		None
+   389 ;; Tracked objects:
+   390 ;;		On entry : 0/0
+   391 ;;		On exit  : 0/0
+   392 ;;		Unchanged: 0/0
+   393 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   394 ;;      Params:         0       0       0       0       0       0       0
+   395 ;;      Locals:         0       0       0       0       0       0       0
+   396 ;;      Temps:          0       0       0       0       0       0       0
+   397 ;;      Totals:         0       0       0       0       0       0       0
+   398 ;;Total ram usage:        0 bytes
+   399 ;; Hardware stack levels used:    1
+   400 ;; Hardware stack levels required when called:    2
+   401 ;; This function calls:
+   402 ;;		Nothing
+   403 ;; This function is called by:
+   404 ;;		_setup
+   405 ;; This function uses a non-reentrant model
+   406 ;;
+   407                           
+   408                           	psect	text2
+   409  000328                     __ptext2:
+   410                           	opt callstack 0
+   411  000328                     _all_LEDs:
+   412                           	opt callstack 27
+   413  000328  0012               	return		;funcret
+   414  00032A                     __end_of_all_LEDs:
+   415                           	opt callstack 0
+   416                           
+   417 ;; *************** function _Timer_and_Interrupt_setup *****************
+   418 ;; Defined at:
+   419 ;;		line 62 in file "setup.c"
+   420 ;; Parameters:    Size  Location     Type
+   421 ;;		None
+   422 ;; Auto vars:     Size  Location     Type
+   423 ;;		None
+   424 ;; Return value:  Size  Location     Type
+   425 ;;                  1    wreg      void 
+   426 ;; Registers used:
+   427 ;;		wreg, status,2
+   428 ;; Tracked objects:
+   429 ;;		On entry : 0/0
+   430 ;;		On exit  : 0/0
+   431 ;;		Unchanged: 0/0
+   432 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   433 ;;      Params:         0       0       0       0       0       0       0
+   434 ;;      Locals:         0       0       0       0       0       0       0
+   435 ;;      Temps:          0       0       0       0       0       0       0
+   436 ;;      Totals:         0       0       0       0       0       0       0
+   437 ;;Total ram usage:        0 bytes
+   438 ;; Hardware stack levels used:    1
+   439 ;; Hardware stack levels required when called:    2
+   440 ;; This function calls:
+   441 ;;		Nothing
+   442 ;; This function is called by:
+   443 ;;		_setup
+   444 ;; This function uses a non-reentrant model
+   445 ;;
+   446                           
+   447                           	psect	text3
+   448  0002F8                     __ptext3:
+   449                           	opt callstack 0
+   450  0002F8                     _Timer_and_Interrupt_setup:
+   451                           	opt callstack 27
+   452  0002F8                     
+   453                           ;setup.c: 67:     T0CON = 0b10010101;
+   454  0002F8  0E95               	movlw	149
+   455  0002FA  6ED5               	movwf	213,c	;volatile
+   456                           
+   457                           ;setup.c: 71:     OSCCON = 0b01100111;
+   458  0002FC  0E67               	movlw	103
+   459  0002FE  6ED3               	movwf	211,c	;volatile
+   460                           
+   461                           ;setup.c: 74:     T3CON = 0b00000101;
+   462  000300  0E05               	movlw	5
+   463  000302  6EB1               	movwf	177,c	;volatile
+   464  000304  0012               	return		;funcret
+   465  000306                     __end_of_Timer_and_Interrupt_setup:
+   466                           	opt callstack 0
+   467                           
+   468 ;; *************** function _IO_setup *****************
+   469 ;; Defined at:
+   470 ;;		line 49 in file "setup.c"
+   471 ;; Parameters:    Size  Location     Type
+   472 ;;		None
+   473 ;; Auto vars:     Size  Location     Type
+   474 ;;		None
+   475 ;; Return value:  Size  Location     Type
+   476 ;;                  1    wreg      void 
+   477 ;; Registers used:
+   478 ;;		None
+   479 ;; Tracked objects:
+   480 ;;		On entry : 0/0
+   481 ;;		On exit  : 0/0
+   482 ;;		Unchanged: 0/0
+   483 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   484 ;;      Params:         0       0       0       0       0       0       0
+   485 ;;      Locals:         0       0       0       0       0       0       0
+   486 ;;      Temps:          0       0       0       0       0       0       0
+   487 ;;      Totals:         0       0       0       0       0       0       0
+   488 ;;Total ram usage:        0 bytes
+   489 ;; Hardware stack levels used:    1
+   490 ;; Hardware stack levels required when called:    2
+   491 ;; This function calls:
+   492 ;;		Nothing
+   493 ;; This function is called by:
+   494 ;;		_setup
+   495 ;; This function uses a non-reentrant model
+   496 ;;
+   497                           
+   498                           	psect	text4
+   499  0002E8                     __ptext4:
+   500                           	opt callstack 0
+   501  0002E8                     _IO_setup:
+   502                           	opt callstack 27
+   503  0002E8                     
+   504                           ;setup.c: 51:   TRISCbits.RC0 = 0;
+   505  0002E8  9094               	bcf	148,0,c	;volatile
+   506                           
+   507                           ;setup.c: 52:   TRISCbits.RC1 = 1;
+   508  0002EA  8294               	bsf	148,1,c	;volatile
+   509                           
+   510                           ;setup.c: 53:   TRISCbits.RC5 = 0;
+   511  0002EC  9A94               	bcf	148,5,c	;volatile
+   512                           
+   513                           ;setup.c: 54:   TRISCbits.RC6 = 0;
+   514  0002EE  9C94               	bcf	148,6,c	;volatile
+   515                           
+   516                           ;setup.c: 56:   TRISBbits.RB2 = 0;
+   517  0002F0  9493               	bcf	147,2,c	;volatile
+   518                           
+   519                           ;setup.c: 57:   TRISBbits.RB3 = 0;
+   520  0002F2  9693               	bcf	147,3,c	;volatile
+   521                           
+   522                           ;setup.c: 58:   TRISBbits.RB4 = 0;
+   523  0002F4  9893               	bcf	147,4,c	;volatile
+   524  0002F6  0012               	return		;funcret
+   525  0002F8                     __end_of_IO_setup:
+   526                           	opt callstack 0
+   527                           
+   528 ;; *************** function _heartbeat *****************
+   529 ;; Defined at:
+   530 ;;		line 157 in file "setup.c"
+   531 ;; Parameters:    Size  Location     Type
+   532 ;;		None
+   533 ;; Auto vars:     Size  Location     Type
+   534 ;;  bHeartState     1   13[COMRAM] unsigned char 
+   535 ;; Return value:  Size  Location     Type
+   536 ;;                  1    wreg      void 
+   537 ;; Registers used:
+   538 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   539 ;; Tracked objects:
+   540 ;;		On entry : 0/0
+   541 ;;		On exit  : 0/0
+   542 ;;		Unchanged: 0/0
+   543 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   544 ;;      Params:         0       0       0       0       0       0       0
+   545 ;;      Locals:         1       0       0       0       0       0       0
+   546 ;;      Temps:          0       0       0       0       0       0       0
+   547 ;;      Totals:         1       0       0       0       0       0       0
+   548 ;;Total ram usage:        1 bytes
+   549 ;; Hardware stack levels used:    1
+   550 ;; Hardware stack levels required when called:    4
+   551 ;; This function calls:
+   552 ;;		_bTimeUp
+   553 ;;		_get_IO
+   554 ;;		_get_Time
+   555 ;;		_set_IO
+   556 ;; This function is called by:
+   557 ;;		_main
+   558 ;; This function uses a non-reentrant model
+   559 ;;
+   560                           
+   561                           	psect	text5
+   562  000104                     __ptext5:
+   563                           	opt callstack 0
+   564  000104                     _heartbeat:
+   565                           	opt callstack 26
+   566  000104                     
+   567                           ;setup.c: 164:     if(!nbFirst)
+   568  000104  502A               	movf	heartbeat@nbFirst^0,w,c
+   569  000106  A4D8               	btfss	status,2,c
+   570  000108  EF88  F000         	goto	u231
+   571  00010C  EF8A  F000         	goto	u230
+   572  000110                     u231:
+   573  000110  EF96  F000         	goto	l967
+   574  000114                     u230:
+   575  000114                     
+   576                           ;setup.c: 165:     {;setup.c: 166:         uwStartTime = get_Time();
+   577  000114  EC83  F001         	call	_get_Time	;wreg free	;volatile
+   578  000118  C016  F024         	movff	?_get_Time,heartbeat@uwStartTime
+   579  00011C  C017  F025         	movff	?_get_Time+1,heartbeat@uwStartTime+1
+   580  000120                     
+   581                           ;setup.c: 167:         ucOverFlow = gbTick;
+   582  000120  C02D  F029         	movff	_gbTick,heartbeat@ucOverFlow
+   583  000124                     
+   584                           ;setup.c: 168:         nbFirst = 1;
+   585  000124  0E01               	movlw	1
+   586  000126  6E2A               	movwf	heartbeat@nbFirst^0,c
+   587                           
+   588                           ;setup.c: 169:     }
+   589  000128  EFC4  F000         	goto	l130
+   590  00012C                     l967:
+   591                           
+   592                           ;setup.c: 171:     {;setup.c: 172:         if(bTimeUp(uwStartTime, 10000))
+   593  00012C  C024  F01A         	movff	heartbeat@uwStartTime,bTimeUp@StartTime
+   594  000130  C025  F01B         	movff	heartbeat@uwStartTime+1,bTimeUp@StartTime+1
+   595  000134  0E27               	movlw	39
+   596  000136  6E1D               	movwf	(bTimeUp@Period+1)^0,c
+   597  000138  0E10               	movlw	16
+   598  00013A  6E1C               	movwf	bTimeUp@Period^0,c
+   599  00013C  ECC5  F000         	call	_bTimeUp	;wreg free
+   600  000140  0900               	iorlw	0
+   601  000142  B4D8               	btfsc	status,2,c
+   602  000144  EFA6  F000         	goto	u241
+   603  000148  EFA8  F000         	goto	u240
+   604  00014C                     u241:
+   605  00014C  EFC4  F000         	goto	l130
+   606  000150                     u240:
+   607  000150                     
+   608                           ;setup.c: 173:         {;setup.c: 174:             bHeartState = get_IO(astOutputs,0);
+   609  000150  0E04               	movlw	low _astOutputs
+   610  000152  6E16               	movwf	get_IO@IO^0,c
+   611  000154  0E00               	movlw	high _astOutputs
+   612  000156  6E17               	movwf	(get_IO@IO+1)^0,c
+   613  000158  0E00               	movlw	0
+   614  00015A  6E18               	movwf	get_IO@item^0,c
+   615  00015C  EC04  F001         	call	_get_IO	;wreg free
+   616  000160  6E23               	movwf	heartbeat@bHeartState^0,c
+   617                           
+   618                           ;setup.c: 175:             set_IO(astOutputs,0,!bHeartState);
+   619  000162  0E04               	movlw	low _astOutputs
+   620  000164  6E16               	movwf	set_IO@IO^0,c
+   621  000166  0E00               	movlw	high _astOutputs
+   622  000168  6E17               	movwf	(set_IO@IO+1)^0,c
+   623  00016A  0E00               	movlw	0
+   624  00016C  6E18               	movwf	set_IO@item^0,c
+   625  00016E  5023               	movf	heartbeat@bHeartState^0,w,c
+   626  000170  B4D8               	btfsc	status,2,c
+   627  000172  EFBD  F000         	goto	u251
+   628  000176  EFC0  F000         	goto	u250
+   629  00017A                     u251:
+   630  00017A  0E01               	movlw	1
+   631  00017C  EFC1  F000         	goto	u260
+   632  000180                     u250:
+   633  000180  0E00               	movlw	0
+   634  000182                     u260:
+   635  000182  6E19               	movwf	set_IO@bValue^0,c
+   636  000184  EC20  F000         	call	_set_IO	;wreg free
+   637  000188                     l130:
+   638  000188  0012               	return		;funcret
+   639  00018A                     __end_of_heartbeat:
+   640                           	opt callstack 0
+   641                           
+   642 ;; *************** function _set_IO *****************
+   643 ;; Defined at:
+   644 ;;		line 9 in file "setup.c"
+   645 ;; Parameters:    Size  Location     Type
+   646 ;;  IO              2    0[COMRAM] PTR struct gstGPIO
+   647 ;;		 -> astOutputs(18), 
+   648 ;;  item            1    2[COMRAM] unsigned char 
+   649 ;;  bValue          1    3[COMRAM] unsigned char 
+   650 ;; Auto vars:     Size  Location     Type
+   651 ;;  ucLocal         2    9[COMRAM] PTR volatile unsigned ch
+   652 ;;		 -> LATB(1), LATC(1), PORTC(1), 
+   653 ;; Return value:  Size  Location     Type
+   654 ;;                  1    wreg      void 
+   655 ;; Registers used:
+   656 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+   657 ;; Tracked objects:
+   658 ;;		On entry : 0/0
+   659 ;;		On exit  : 0/0
+   660 ;;		Unchanged: 0/0
+   661 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   662 ;;      Params:         4       0       0       0       0       0       0
+   663 ;;      Locals:         2       0       0       0       0       0       0
+   664 ;;      Temps:          5       0       0       0       0       0       0
+   665 ;;      Totals:        11       0       0       0       0       0       0
+   666 ;;Total ram usage:       11 bytes
+   667 ;; Hardware stack levels used:    1
+   668 ;; Hardware stack levels required when called:    2
+   669 ;; This function calls:
+   670 ;;		Nothing
+   671 ;; This function is called by:
+   672 ;;		_heartbeat
+   673 ;;		_testing
+   674 ;; This function uses a non-reentrant model
+   675 ;;
+   676                           
+   677                           	psect	text6
+   678  000040                     __ptext6:
+   679                           	opt callstack 0
+   680  000040                     _set_IO:
+   681                           	opt callstack 27
+   682  000040                     
+   683                           ;setup.c: 9: void set_IO (struct gstGPIO *IO, unsigned char item,unsigned char bValue);s
+      +                          etup.c: 10: {;setup.c: 11:     volatile unsigned char *ucLocal;;setup.c: 12:     ucLocal
+      +                           = IO[item].port;
+   684  000040  5018               	movf	set_IO@item^0,w,c
+   685  000042  0D03               	mullw	3
+   686  000044  CFF3 F01A          	movff	prodl,??_set_IO
+   687  000048  CFF4 F01B          	movff	prodh,??_set_IO+1
+   688  00004C  501A               	movf	??_set_IO^0,w,c
+   689  00004E  2416               	addwf	set_IO@IO^0,w,c
+   690  000050  6ED9               	movwf	fsr2l,c
+   691  000052  501B               	movf	(??_set_IO+1)^0,w,c
+   692  000054  2017               	addwfc	(set_IO@IO+1)^0,w,c
+   693  000056  6EDA               	movwf	fsr2h,c
+   694  000058  CFDE F01F          	movff	postinc2,set_IO@ucLocal
+   695  00005C  CFDD F020          	movff	postdec2,set_IO@ucLocal+1
+   696  000060                     
+   697                           ;setup.c: 13:     if (bValue)
+   698  000060  5019               	movf	set_IO@bValue^0,w,c
+   699  000062  B4D8               	btfsc	status,2,c
+   700  000064  EF36  F000         	goto	u161
+   701  000068  EF38  F000         	goto	u160
+   702  00006C                     u161:
+   703  00006C  EF5C  F000         	goto	l937
+   704  000070                     u160:
+   705  000070                     
+   706                           ;setup.c: 14:     {;setup.c: 15:         *ucLocal |= (1 << IO[item].pin);
+   707  000070  5018               	movf	set_IO@item^0,w,c
+   708  000072  0D03               	mullw	3
+   709  000074  C016  F01A         	movff	set_IO@IO,??_set_IO
+   710  000078  C017  F01B         	movff	set_IO@IO+1,??_set_IO+1
+   711  00007C  50F3               	movf	243,w,c
+   712  00007E  261A               	addwf	??_set_IO^0,f,c
+   713  000080  50F4               	movf	244,w,c
+   714  000082  221B               	addwfc	(??_set_IO+1)^0,f,c
+   715  000084  0E02               	movlw	2
+   716  000086  241A               	addwf	??_set_IO^0,w,c
+   717  000088  6ED9               	movwf	fsr2l,c
+   718  00008A  0E00               	movlw	0
+   719  00008C  201B               	addwfc	(??_set_IO+1)^0,w,c
+   720  00008E  6EDA               	movwf	fsr2h,c
+   721  000090  50DF               	movf	indf2,w,c
+   722  000092  6E1C               	movwf	(??_set_IO+2)^0,c
+   723  000094  0E01               	movlw	1
+   724  000096  6E1D               	movwf	(??_set_IO+3)^0,c
+   725  000098  2A1C               	incf	(??_set_IO+2)^0,f,c
+   726  00009A  EF51  F000         	goto	u174
+   727  00009E                     u175:
+   728  00009E  90D8               	bcf	status,0,c
+   729  0000A0  361D               	rlcf	(??_set_IO+3)^0,f,c
+   730  0000A2                     u174:
+   731  0000A2  2E1C               	decfsz	(??_set_IO+2)^0,f,c
+   732  0000A4  EF4F  F000         	goto	u175
+   733  0000A8  C01F  FFD9         	movff	set_IO@ucLocal,fsr2l
+   734  0000AC  C020  FFDA         	movff	set_IO@ucLocal+1,fsr2h
+   735  0000B0  501D               	movf	(??_set_IO+3)^0,w,c
+   736  0000B2  12DF               	iorwf	indf2,f,c
+   737                           
+   738                           ;setup.c: 16:     }
+   739  0000B4  EF81  F000         	goto	l79
+   740  0000B8                     l937:
+   741                           
+   742                           ;setup.c: 18:     {;setup.c: 19:         *ucLocal &= ~(1 << IO[item].pin);
+   743  0000B8  5018               	movf	set_IO@item^0,w,c
+   744  0000BA  0D03               	mullw	3
+   745  0000BC  C016  F01A         	movff	set_IO@IO,??_set_IO
+   746  0000C0  C017  F01B         	movff	set_IO@IO+1,??_set_IO+1
+   747  0000C4  50F3               	movf	243,w,c
+   748  0000C6  261A               	addwf	??_set_IO^0,f,c
+   749  0000C8  50F4               	movf	244,w,c
+   750  0000CA  221B               	addwfc	(??_set_IO+1)^0,f,c
+   751  0000CC  0E02               	movlw	2
+   752  0000CE  241A               	addwf	??_set_IO^0,w,c
+   753  0000D0  6ED9               	movwf	fsr2l,c
+   754  0000D2  0E00               	movlw	0
+   755  0000D4  201B               	addwfc	(??_set_IO+1)^0,w,c
+   756  0000D6  6EDA               	movwf	fsr2h,c
+   757  0000D8  50DF               	movf	indf2,w,c
+   758  0000DA  6E1C               	movwf	(??_set_IO+2)^0,c
+   759  0000DC  0E01               	movlw	1
+   760  0000DE  6E1D               	movwf	(??_set_IO+3)^0,c
+   761  0000E0  2A1C               	incf	(??_set_IO+2)^0,f,c
+   762  0000E2  EF75  F000         	goto	u184
+   763  0000E6                     u185:
+   764  0000E6  90D8               	bcf	status,0,c
+   765  0000E8  361D               	rlcf	(??_set_IO+3)^0,f,c
+   766  0000EA                     u184:
+   767  0000EA  2E1C               	decfsz	(??_set_IO+2)^0,f,c
+   768  0000EC  EF73  F000         	goto	u185
+   769  0000F0  501D               	movf	(??_set_IO+3)^0,w,c
+   770  0000F2  0AFF               	xorlw	255
+   771  0000F4  6E1E               	movwf	(??_set_IO+4)^0,c
+   772  0000F6  C01F  FFD9         	movff	set_IO@ucLocal,fsr2l
+   773  0000FA  C020  FFDA         	movff	set_IO@ucLocal+1,fsr2h
+   774  0000FE  501E               	movf	(??_set_IO+4)^0,w,c
+   775  000100  16DF               	andwf	indf2,f,c
+   776  000102                     l79:
+   777  000102  0012               	return		;funcret
+   778  000104                     __end_of_set_IO:
+   779                           	opt callstack 0
+   780                           
+   781 ;; *************** function _get_IO *****************
+   782 ;; Defined at:
+   783 ;;		line 24 in file "setup.c"
+   784 ;; Parameters:    Size  Location     Type
+   785 ;;  IO              2    0[COMRAM] PTR struct gstGPIO
+   786 ;;		 -> astOutputs(18), 
+   787 ;;  item            1    2[COMRAM] unsigned char 
+   788 ;; Auto vars:     Size  Location     Type
+   789 ;;		None
+   790 ;; Return value:  Size  Location     Type
+   791 ;;                  1    wreg      unsigned char 
+   792 ;; Registers used:
+   793 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+   794 ;; Tracked objects:
+   795 ;;		On entry : 0/0
+   796 ;;		On exit  : 0/0
+   797 ;;		Unchanged: 0/0
+   798 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   799 ;;      Params:         3       0       0       0       0       0       0
+   800 ;;      Locals:         0       0       0       0       0       0       0
+   801 ;;      Temps:          8       0       0       0       0       0       0
+   802 ;;      Totals:        11       0       0       0       0       0       0
+   803 ;;Total ram usage:       11 bytes
+   804 ;; Hardware stack levels used:    1
+   805 ;; Hardware stack levels required when called:    2
+   806 ;; This function calls:
+   807 ;;		Nothing
+   808 ;; This function is called by:
+   809 ;;		_heartbeat
+   810 ;; This function uses a non-reentrant model
+   811 ;;
+   812                           
+   813                           	psect	text7
+   814  000208                     __ptext7:
+   815                           	opt callstack 0
+   816  000208                     _get_IO:
+   817                           	opt callstack 27
+   818  000208                     
+   819                           ;setup.c: 24: unsigned char get_IO (struct gstGPIO *IO, unsigned char item);setup.c: 25:
+      +                           {;setup.c: 26:     return (unsigned char)((*IO[item].port >> IO[item].pin) & 0x01);
+   820  000208  5018               	movf	get_IO@item^0,w,c
+   821  00020A  0D03               	mullw	3
+   822  00020C  C016  F019         	movff	get_IO@IO,??_get_IO
+   823  000210  C017  F01A         	movff	get_IO@IO+1,??_get_IO+1
+   824  000214  50F3               	movf	243,w,c
+   825  000216  2619               	addwf	??_get_IO^0,f,c
+   826  000218  50F4               	movf	244,w,c
+   827  00021A  221A               	addwfc	(??_get_IO+1)^0,f,c
+   828  00021C  0E02               	movlw	2
+   829  00021E  2419               	addwf	??_get_IO^0,w,c
+   830  000220  6ED9               	movwf	fsr2l,c
+   831  000222  0E00               	movlw	0
+   832  000224  201A               	addwfc	(??_get_IO+1)^0,w,c
+   833  000226  6EDA               	movwf	fsr2h,c
+   834  000228  50DF               	movf	indf2,w,c
+   835  00022A  6E1B               	movwf	(??_get_IO+2)^0,c
+   836  00022C  5018               	movf	get_IO@item^0,w,c
+   837  00022E  0D03               	mullw	3
+   838  000230  CFF3 F01C          	movff	prodl,??_get_IO+3
+   839  000234  CFF4 F01D          	movff	prodh,??_get_IO+4
+   840  000238  501C               	movf	(??_get_IO+3)^0,w,c
+   841  00023A  2416               	addwf	get_IO@IO^0,w,c
+   842  00023C  6ED9               	movwf	fsr2l,c
+   843  00023E  501D               	movf	(??_get_IO+4)^0,w,c
+   844  000240  2017               	addwfc	(get_IO@IO+1)^0,w,c
+   845  000242  6EDA               	movwf	fsr2h,c
+   846  000244  CFDE F01E          	movff	postinc2,??_get_IO+5
+   847  000248  CFDD F01F          	movff	postdec2,??_get_IO+6
+   848  00024C  C01E  FFD9         	movff	??_get_IO+5,fsr2l
+   849  000250  C01F  FFDA         	movff	??_get_IO+6,fsr2h
+   850  000254  50DF               	movf	indf2,w,c
+   851  000256  6E20               	movwf	(??_get_IO+7)^0,c
+   852  000258  2A1B               	incf	(??_get_IO+2)^0,f,c
+   853  00025A  EF31  F001         	goto	u194
+   854  00025E                     u195:
+   855  00025E  90D8               	bcf	status,0,c
+   856  000260  3220               	rrcf	(??_get_IO+7)^0,f,c
+   857  000262                     u194:
+   858  000262  2E1B               	decfsz	(??_get_IO+2)^0,f,c
+   859  000264  EF2F  F001         	goto	u195
+   860  000268  5020               	movf	(??_get_IO+7)^0,w,c
+   861  00026A  0B01               	andlw	1
+   862  00026C  0012               	return		;funcret
+   863  00026E                     __end_of_get_IO:
+   864                           	opt callstack 0
+   865                           
+   866 ;; *************** function _bTimeUp *****************
+   867 ;; Defined at:
+   868 ;;		line 113 in file "setup.c"
+   869 ;; Parameters:    Size  Location     Type
+   870 ;;  StartTime       2    4[COMRAM] unsigned short 
+   871 ;;  Period          2    6[COMRAM] unsigned short 
+   872 ;; Auto vars:     Size  Location     Type
+   873 ;;  CurrentTime     2   11[COMRAM] unsigned short 
+   874 ;;  b               1   10[COMRAM] unsigned char 
+   875 ;; Return value:  Size  Location     Type
+   876 ;;                  1    wreg      unsigned char 
+   877 ;; Registers used:
+   878 ;;		wreg, status,2, status,0, cstack
+   879 ;; Tracked objects:
+   880 ;;		On entry : 0/0
+   881 ;;		On exit  : 0/0
+   882 ;;		Unchanged: 0/0
+   883 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   884 ;;      Params:         4       0       0       0       0       0       0
+   885 ;;      Locals:         3       0       0       0       0       0       0
+   886 ;;      Temps:          2       0       0       0       0       0       0
+   887 ;;      Totals:         9       0       0       0       0       0       0
+   888 ;;Total ram usage:        9 bytes
+   889 ;; Hardware stack levels used:    1
+   890 ;; Hardware stack levels required when called:    3
+   891 ;; This function calls:
+   892 ;;		_get_Time
+   893 ;; This function is called by:
+   894 ;;		_heartbeat
+   895 ;; This function uses a non-reentrant model
+   896 ;;
+   897                           
+   898                           	psect	text8
+   899  00018A                     __ptext8:
+   900                           	opt callstack 0
+   901  00018A                     _bTimeUp:
+   902                           	opt callstack 26
+   903  00018A                     
+   904                           ;setup.c: 114:                         unsigned short StartTime,;setup.c: 116:          
+      +                                         unsigned short Period;setup.c: 118: {;setup.c: 119:     unsigned char b =
+      +                           0;
+   905  00018A  0E00               	movlw	0
+   906  00018C  6E20               	movwf	bTimeUp@b^0,c
+   907  00018E                     
+   908                           ;setup.c: 120:     unsigned short CurrentTime = get_Time();
+   909  00018E  EC83  F001         	call	_get_Time	;wreg free	;volatile
+   910  000192  C016  F021         	movff	?_get_Time,bTimeUp@CurrentTime
+   911  000196  C017  F022         	movff	?_get_Time+1,bTimeUp@CurrentTime+1
+   912  00019A                     
+   913                           ;setup.c: 122:     if (CurrentTime < StartTime)
+   914  00019A  501A               	movf	bTimeUp@StartTime^0,w,c
+   915  00019C  5C21               	subwf	bTimeUp@CurrentTime^0,w,c
+   916  00019E  501B               	movf	(bTimeUp@StartTime+1)^0,w,c
+   917  0001A0  5822               	subwfb	(bTimeUp@CurrentTime+1)^0,w,c
+   918  0001A2  B0D8               	btfsc	status,0,c
+   919  0001A4  EFD6  F000         	goto	u201
+   920  0001A8  EFD8  F000         	goto	u200
+   921  0001AC                     u201:
+   922  0001AC  EFEF  F000         	goto	l953
+   923  0001B0                     u200:
+   924  0001B0                     
+   925                           ;setup.c: 123:     {;setup.c: 126:             if(((0xFFFF - StartTime) + CurrentTime) >
+      +                          = Period)
+   926  0001B0  1C1A               	comf	bTimeUp@StartTime^0,w,c
+   927  0001B2  6E1E               	movwf	??_bTimeUp^0,c
+   928  0001B4  1C1B               	comf	(bTimeUp@StartTime+1)^0,w,c
+   929  0001B6  6E1F               	movwf	(??_bTimeUp+1)^0,c
+   930  0001B8  5021               	movf	bTimeUp@CurrentTime^0,w,c
+   931  0001BA  261E               	addwf	??_bTimeUp^0,f,c
+   932  0001BC  5022               	movf	(bTimeUp@CurrentTime+1)^0,w,c
+   933  0001BE  221F               	addwfc	(??_bTimeUp+1)^0,f,c
+   934  0001C0  501C               	movf	bTimeUp@Period^0,w,c
+   935  0001C2  5C1E               	subwf	??_bTimeUp^0,w,c
+   936  0001C4  501D               	movf	(bTimeUp@Period+1)^0,w,c
+   937  0001C6  581F               	subwfb	(??_bTimeUp+1)^0,w,c
+   938  0001C8  A0D8               	btfss	status,0,c
+   939  0001CA  EFE9  F000         	goto	u211
+   940  0001CE  EFEB  F000         	goto	u210
+   941  0001D2                     u211:
+   942  0001D2  EF02  F001         	goto	l113
+   943  0001D6                     u210:
+   944  0001D6                     l951:
+   945                           
+   946                           ;setup.c: 127:                 {;setup.c: 128:                     b = 1;
+   947  0001D6  0E01               	movlw	1
+   948  0001D8  6E20               	movwf	bTimeUp@b^0,c
+   949  0001DA  EF02  F001         	goto	l113
+   950  0001DE                     l953:
+   951  0001DE  501A               	movf	bTimeUp@StartTime^0,w,c
+   952  0001E0  5C21               	subwf	bTimeUp@CurrentTime^0,w,c
+   953  0001E2  6E1E               	movwf	??_bTimeUp^0,c
+   954  0001E4  501B               	movf	(bTimeUp@StartTime+1)^0,w,c
+   955  0001E6  5822               	subwfb	(bTimeUp@CurrentTime+1)^0,w,c
+   956  0001E8  6E1F               	movwf	(??_bTimeUp+1)^0,c
+   957  0001EA  501C               	movf	bTimeUp@Period^0,w,c
+   958  0001EC  5C1E               	subwf	??_bTimeUp^0,w,c
+   959  0001EE  501D               	movf	(bTimeUp@Period+1)^0,w,c
+   960  0001F0  581F               	subwfb	(??_bTimeUp+1)^0,w,c
+   961  0001F2  A0D8               	btfss	status,0,c
+   962  0001F4  EFFE  F000         	goto	u221
+   963  0001F8  EF00  F001         	goto	u220
+   964  0001FC                     u221:
+   965  0001FC  EF02  F001         	goto	l113
+   966  000200                     u220:
+   967  000200  EFEB  F000         	goto	l951
+   968  000204                     l113:
+   969                           
+   970                           ;setup.c: 136:     return b;
+   971  000204  5020               	movf	bTimeUp@b^0,w,c
+   972  000206  0012               	return		;funcret
+   973  000208                     __end_of_bTimeUp:
+   974                           	opt callstack 0
+   975                           
+   976 ;; *************** function _get_Time *****************
+   977 ;; Defined at:
+   978 ;;		line 107 in file "setup.c"
+   979 ;; Parameters:    Size  Location     Type
+   980 ;;		None
+   981 ;; Auto vars:     Size  Location     Type
+   982 ;;		None
+   983 ;; Return value:  Size  Location     Type
+   984 ;;                  2    0[COMRAM] unsigned short 
+   985 ;; Registers used:
+   986 ;;		wreg, status,2
+   987 ;; Tracked objects:
+   988 ;;		On entry : 0/0
+   989 ;;		On exit  : 0/0
+   990 ;;		Unchanged: 0/0
+   991 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   992 ;;      Params:         2       0       0       0       0       0       0
+   993 ;;      Locals:         0       0       0       0       0       0       0
+   994 ;;      Temps:          2       0       0       0       0       0       0
+   995 ;;      Totals:         4       0       0       0       0       0       0
+   996 ;;Total ram usage:        4 bytes
+   997 ;; Hardware stack levels used:    1
+   998 ;; Hardware stack levels required when called:    2
+   999 ;; This function calls:
+  1000 ;;		Nothing
+  1001 ;; This function is called by:
+  1002 ;;		_bTimeUp
+  1003 ;;		_heartbeat
+  1004 ;; This function uses a non-reentrant model
+  1005 ;;
+  1006                           
+  1007                           	psect	text9
+  1008  000306                     __ptext9:
+  1009                           	opt callstack 0
+  1010  000306                     _get_Time:
+  1011                           	opt callstack 27
+  1012  000306                     
+  1013                           ;setup.c: 109:     return ((unsigned short)(TMR0H << 8) | TMR0L);
+  1014  000306  50D7               	movf	215,w,c	;volatile
+  1015  000308  6E18               	movwf	??_get_Time^0,c
+  1016  00030A  50D6               	movf	214,w,c	;volatile
+  1017  00030C  6E16               	movwf	?_get_Time^0,c
+  1018  00030E  C018  F017         	movff	??_get_Time,?_get_Time+1
+  1019  000312  0012               	return		;funcret
+  1020  000314                     __end_of_get_Time:
+  1021                           	opt callstack 0
+  1022                           
+  1023 ;; *************** function _clr_LEDs *****************
+  1024 ;; Defined at:
+  1025 ;;		line 9 in file "leds.c"
+  1026 ;; Parameters:    Size  Location     Type
+  1027 ;;		None
+  1028 ;; Auto vars:     Size  Location     Type
+  1029 ;;		None
+  1030 ;; Return value:  Size  Location     Type
+  1031 ;;                  1    wreg      void 
+  1032 ;; Registers used:
+  1033 ;;		None
+  1034 ;; Tracked objects:
+  1035 ;;		On entry : 0/0
+  1036 ;;		On exit  : 0/0
+  1037 ;;		Unchanged: 0/0
+  1038 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1039 ;;      Params:         0       0       0       0       0       0       0
+  1040 ;;      Locals:         0       0       0       0       0       0       0
+  1041 ;;      Temps:          0       0       0       0       0       0       0
+  1042 ;;      Totals:         0       0       0       0       0       0       0
+  1043 ;;Total ram usage:        0 bytes
+  1044 ;; Hardware stack levels used:    1
+  1045 ;; Hardware stack levels required when called:    2
+  1046 ;; This function calls:
+  1047 ;;		Nothing
+  1048 ;; This function is called by:
+  1049 ;;		_main
+  1050 ;; This function uses a non-reentrant model
+  1051 ;;
+  1052                           
+  1053                           	psect	text10
+  1054  00032A                     __ptext10:
+  1055                           	opt callstack 0
+  1056  00032A                     _clr_LEDs:
+  1057                           	opt callstack 28
+  1058  00032A  0012               	return		;funcret
+  1059  00032C                     __end_of_clr_LEDs:
+  1060                           	opt callstack 0
+  1061                           
+  1062 ;; *************** function _ISR *****************
+  1063 ;; Defined at:
+  1064 ;;		line 89 in file "setup.c"
+  1065 ;; Parameters:    Size  Location     Type
+  1066 ;;		None
+  1067 ;; Auto vars:     Size  Location     Type
+  1068 ;;		None
+  1069 ;; Return value:  Size  Location     Type
+  1070 ;;                  1    wreg      void 
+  1071 ;; Registers used:
+  1072 ;;		wreg, status,2, status,0, cstack
+  1073 ;; Tracked objects:
+  1074 ;;		On entry : 0/0
+  1075 ;;		On exit  : 0/0
+  1076 ;;		Unchanged: 0/0
+  1077 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1078 ;;      Params:         0       0       0       0       0       0       0
+  1079 ;;      Locals:         0       0       0       0       0       0       0
+  1080 ;;      Temps:          0       0       0       0       0       0       0
+  1081 ;;      Totals:         0       0       0       0       0       0       0
+  1082 ;;Total ram usage:        0 bytes
+  1083 ;; Hardware stack levels used:    1
+  1084 ;; Hardware stack levels required when called:    1
+  1085 ;; This function calls:
+  1086 ;;		_clr_Timer
+  1087 ;;		_clr_Timer3
+  1088 ;; This function is called by:
+  1089 ;;		Interrupt level 2
+  1090 ;; This function uses a non-reentrant model
+  1091 ;;
+  1092                           
+  1093                           	psect	intcode
+  1094  000008                     __pintcode:
+  1095                           	opt callstack 0
+  1096  000008                     _ISR:
+  1097                           	opt callstack 26
+  1098                           
+  1099                           ;incstack = 0
+  1100  000008  822E               	bsf	int$flags,1,c	;set compiler interrupt flag (level 2)
+  1101  00000A                     
+  1102                           ;setup.c: 91:     if(TMR0IF)
+  1103  00000A  A4F2               	btfss	4082,2,c	;volatile
+  1104  00000C  EF0A  F000         	goto	i2u12_41
+  1105  000010  EF0C  F000         	goto	i2u12_40
+  1106  000014                     i2u12_41:
+  1107  000014  EF10  F000         	goto	i2l901
+  1108  000018                     i2u12_40:
+  1109  000018                     
+  1110                           ;setup.c: 92:     {;setup.c: 93:         TMR0IF = 0;
+  1111  000018  94F2               	bcf	4082,2,c	;volatile
+  1112  00001A                     
+  1113                           ;setup.c: 94:         clr_Timer();
+  1114  00001A  EC8F  F001         	call	_clr_Timer	;wreg free
+  1115  00001E                     
+  1116                           ;setup.c: 95:         gbTick++;
+  1117  00001E  2A2D               	incf	_gbTick^0,f,c
+  1118  000020                     i2l901:
+  1119                           
+  1120                           ;setup.c: 98:     if(TMR3IF)
+  1121  000020  A2A1               	btfss	4001,1,c	;volatile
+  1122  000022  EF15  F000         	goto	i2u13_41
+  1123  000026  EF17  F000         	goto	i2u13_40
+  1124  00002A                     i2u13_41:
+  1125  00002A  EF1C  F000         	goto	i2l105
+  1126  00002E                     i2u13_40:
+  1127  00002E                     
+  1128                           ;setup.c: 99:     {;setup.c: 100:         TMR3IF = 0;
+  1129  00002E  92A1               	bcf	4001,1,c	;volatile
+  1130  000030                     
+  1131                           ;setup.c: 101:         clr_Timer3();
+  1132  000030  EC8A  F001         	call	_clr_Timer3	;wreg free
+  1133  000034                     
+  1134                           ;setup.c: 102:         guc_3_Tick++;
+  1135  000034  2A2C               	incf	_guc_3_Tick^0,f,c
+  1136  000036                     
+  1137                           ;setup.c: 103:         gucTestBit++;
+  1138  000036  2A2B               	incf	_gucTestBit^0,f,c
+  1139  000038                     i2l105:
+  1140  000038  922E               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+  1141  00003A  0011               	retfie		f
+  1142  00003C                     __end_of_ISR:
+  1143                           	opt callstack 0
+  1144                           
+  1145 ;; *************** function _clr_Timer3 *****************
+  1146 ;; Defined at:
+  1147 ;;		line 83 in file "setup.c"
+  1148 ;; Parameters:    Size  Location     Type
+  1149 ;;		None
+  1150 ;; Auto vars:     Size  Location     Type
+  1151 ;;		None
+  1152 ;; Return value:  Size  Location     Type
+  1153 ;;                  1    wreg      void 
+  1154 ;; Registers used:
+  1155 ;;		wreg, status,2
+  1156 ;; Tracked objects:
+  1157 ;;		On entry : 0/0
+  1158 ;;		On exit  : 0/0
+  1159 ;;		Unchanged: 0/0
+  1160 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1161 ;;      Params:         0       0       0       0       0       0       0
+  1162 ;;      Locals:         0       0       0       0       0       0       0
+  1163 ;;      Temps:          0       0       0       0       0       0       0
+  1164 ;;      Totals:         0       0       0       0       0       0       0
+  1165 ;;Total ram usage:        0 bytes
+  1166 ;; Hardware stack levels used:    1
+  1167 ;; This function calls:
+  1168 ;;		Nothing
+  1169 ;; This function is called by:
+  1170 ;;		_ISR
+  1171 ;; This function uses a non-reentrant model
+  1172 ;;
+  1173                           
+  1174                           	psect	text12
+  1175  000314                     __ptext12:
+  1176                           	opt callstack 0
+  1177  000314                     _clr_Timer3:
+  1178                           	opt callstack 26
+  1179  000314                     
+  1180                           ;setup.c: 85:     TMR3H = 0;
+  1181  000314  0E00               	movlw	0
+  1182  000316  6EB3               	movwf	179,c	;volatile
+  1183                           
+  1184                           ;setup.c: 86:     TMR3L = 0;
+  1185  000318  0E00               	movlw	0
+  1186  00031A  6EB2               	movwf	178,c	;volatile
+  1187  00031C  0012               	return		;funcret
+  1188  00031E                     __end_of_clr_Timer3:
+  1189                           	opt callstack 0
+  1190                           
+  1191 ;; *************** function _clr_Timer *****************
+  1192 ;; Defined at:
+  1193 ;;		line 77 in file "setup.c"
+  1194 ;; Parameters:    Size  Location     Type
+  1195 ;;		None
+  1196 ;; Auto vars:     Size  Location     Type
+  1197 ;;		None
+  1198 ;; Return value:  Size  Location     Type
+  1199 ;;                  1    wreg      void 
+  1200 ;; Registers used:
+  1201 ;;		wreg, status,2
+  1202 ;; Tracked objects:
+  1203 ;;		On entry : 0/0
+  1204 ;;		On exit  : 0/0
+  1205 ;;		Unchanged: 0/0
+  1206 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1207 ;;      Params:         0       0       0       0       0       0       0
+  1208 ;;      Locals:         0       0       0       0       0       0       0
+  1209 ;;      Temps:          0       0       0       0       0       0       0
+  1210 ;;      Totals:         0       0       0       0       0       0       0
+  1211 ;;Total ram usage:        0 bytes
+  1212 ;; Hardware stack levels used:    1
+  1213 ;; This function calls:
+  1214 ;;		Nothing
+  1215 ;; This function is called by:
+  1216 ;;		_ISR
+  1217 ;; This function uses a non-reentrant model
+  1218 ;;
+  1219                           
+  1220                           	psect	text13
+  1221  00031E                     __ptext13:
+  1222                           	opt callstack 0
+  1223  00031E                     _clr_Timer:
+  1224                           	opt callstack 26
+  1225  00031E                     
+  1226                           ;setup.c: 79:     TMR0H = 0;
+  1227  00031E  0E00               	movlw	0
+  1228  000320  6ED7               	movwf	215,c	;volatile
+  1229                           
+  1230                           ;setup.c: 80:     TMR0L = 0;
+  1231  000322  0E00               	movlw	0
+  1232  000324  6ED6               	movwf	214,c	;volatile
+  1233  000326  0012               	return		;funcret
+  1234  000328                     __end_of_clr_Timer:
+  1235                           	opt callstack 0
+  1236  0000                     
+  1237                           	psect	rparam
+  1238  0000                     
+  1239                           	psect	temp
+  1240  00002E                     btemp:
+  1241                           	opt callstack 0
+  1242  00002E                     	ds	1
+  1243  0000                     int$flags	set	btemp
+  1244  0000                     wtemp8	set	btemp+1
+  1245  0000                     ttemp5	set	btemp+1
+  1246  0000                     ttemp6	set	btemp+4
+  1247  0000                     ttemp7	set	btemp+8
+  1248                           tosu	equ	0xFFF
+  1249                           tosh	equ	0xFFE
+  1250                           tosl	equ	0xFFD
+  1251                           stkptr	equ	0xFFC
+  1252                           pclatu	equ	0xFFB
+  1253                           pclath	equ	0xFFA
+  1254                           pcl	equ	0xFF9
+  1255                           tblptru	equ	0xFF8
+  1256                           tblptrh	equ	0xFF7
+  1257                           tblptrl	equ	0xFF6
+  1258                           tablat	equ	0xFF5
+  1259                           prodh	equ	0xFF4
+  1260                           prodl	equ	0xFF3
+  1261                           indf0	equ	0xFEF
+  1262                           postinc0	equ	0xFEE
+  1263                           postdec0	equ	0xFED
+  1264                           preinc0	equ	0xFEC
+  1265                           plusw0	equ	0xFEB
+  1266                           fsr0h	equ	0xFEA
+  1267                           fsr0l	equ	0xFE9
+  1268                           wreg	equ	0xFE8
+  1269                           indf1	equ	0xFE7
+  1270                           postinc1	equ	0xFE6
+  1271                           postdec1	equ	0xFE5
+  1272                           preinc1	equ	0xFE4
+  1273                           plusw1	equ	0xFE3
+  1274                           fsr1h	equ	0xFE2
+  1275                           fsr1l	equ	0xFE1
+  1276                           bsr	equ	0xFE0
+  1277                           indf2	equ	0xFDF
+  1278                           postinc2	equ	0xFDE
+  1279                           postdec2	equ	0xFDD
+  1280                           preinc2	equ	0xFDC
+  1281                           plusw2	equ	0xFDB
+  1282                           fsr2h	equ	0xFDA
+  1283                           fsr2l	equ	0xFD9
+  1284                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        21
+    BSS         10
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           94     14      45
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    astOutputs.port	PTR volatile unsigned char  size(2) Largest target is 1
+		 -> LATB(SFR[1]), LATC(SFR[1]), PORTC(SFR[1]), 
+
+    astInputs.port	PTR volatile unsigned char  size(2) Largest target is 1
+		 -> LATB(SFR[1]), LATC(SFR[1]), PORTC(SFR[1]), 
+
+    get_IO@IO.port	PTR volatile unsigned char  size(2) Largest target is 1
+		 -> LATB(SFR[1]), LATC(SFR[1]), PORTC(SFR[1]), 
+
+    get_IO@IO	PTR struct gstGPIO size(2) Largest target is 24
+		 -> astOutputs(COMRAM[18]), 
+
+    S47gstGPIO$port	PTR volatile unsigned char  size(2) Largest target is 1
+		 -> LATB(SFR[1]), LATC(SFR[1]), PORTC(SFR[1]), 
+
+    set_IO@IO.port	PTR volatile unsigned char  size(2) Largest target is 1
+		 -> LATB(SFR[1]), LATC(SFR[1]), PORTC(SFR[1]), 
+
+    set_IO@IO	PTR struct gstGPIO size(2) Largest target is 24
+		 -> astOutputs(COMRAM[18]), 
+
+    set_IO@ucLocal	PTR volatile unsigned char  size(2) Largest target is 1
+		 -> LATB(SFR[1]), LATC(SFR[1]), PORTC(SFR[1]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_heartbeat
+    _heartbeat->_bTimeUp
+    _bTimeUp->_get_Time
+
+Critical Paths under _ISR in COMRAM
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _ISR in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _ISR in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _ISR in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _ISR in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _ISR in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _ISR in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0    1273
+                           _clr_LEDs
+                          _heartbeat
+                              _setup
+ ---------------------------------------------------------------------------------
+ (1) _setup                                                0     0      0       0
+                           _IO_setup
+          _Timer_and_Interrupt_setup
+                           _all_LEDs
+ ---------------------------------------------------------------------------------
+ (2) _all_LEDs                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _Timer_and_Interrupt_setup                            0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _IO_setup                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _heartbeat                                            1     1      0    1273
+                                             13 COMRAM     1     1      0
+                            _bTimeUp
+                             _get_IO
+                           _get_Time
+                             _set_IO
+ ---------------------------------------------------------------------------------
+ (2) _set_IO                                              11     7      4     655
+                                              0 COMRAM    11     7      4
+ ---------------------------------------------------------------------------------
+ (2) _get_IO                                              11     8      3     240
+                                              0 COMRAM    11     8      3
+ ---------------------------------------------------------------------------------
+ (2) _bTimeUp                                              9     5      4     354
+                                              4 COMRAM     9     5      4
+                           _get_Time
+ ---------------------------------------------------------------------------------
+ (2) _get_Time                                             4     2      2       0
+                                              0 COMRAM     4     2      2
+ ---------------------------------------------------------------------------------
+ (1) _clr_LEDs                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (4) _ISR                                                  0     0      0       0
+                          _clr_Timer
+                         _clr_Timer3
+ ---------------------------------------------------------------------------------
+ (5) _clr_Timer3                                           0     0      0       0
+ ---------------------------------------------------------------------------------
+ (5) _clr_Timer                                            0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 5
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _clr_LEDs
+   _heartbeat
+     _bTimeUp
+       _get_Time
+     _get_IO
+     _get_Time
+     _set_IO
+   _setup
+     _IO_setup
+     _Timer_and_Interrupt_setup
+     _all_LEDs
+
+ _ISR (ROOT)
+   _clr_Timer
+   _clr_Timer3
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             5FF      0       0      17        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK5           100      0       0      16        0.0%
+BANK5              100      0       0      14        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITCOMRAM           5E      0       0       0        0.0%
+COMRAM              5E      E      2D       1       47.9%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      2D      15        0.0%
+DATA                 0      0      2D       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.10 build 88905656 
+Symbol Table                                                                                   Fri Feb 26 21:55:36 2021
+
+                                 l9 032A                 testing@ucLocalTicks 0027  
+                                l12 0328                                  l82 026C  
+                                l92 0304                                  l79 0102  
+                                l89 02F6                                 l113 0204  
+                               l130 0188                                 l115 0206  
+                               l108 0312                                 l118 02BC  
+                               l833 02E8                                 l931 0040  
+                               l835 02F8                                 l933 0060  
+                               l861 02B0                                 l853 02A4  
+                               l927 0306                                 l951 01D6  
+                               l943 018A                                 l935 0070  
+                               l863 02B2                                 l855 02A6  
+                               l953 01DE                                 l945 018E  
+                               l937 00B8                                 l961 0114  
+                               l865 02B4                                 l857 02AA  
+                               l947 019A                                 l939 0208  
+                               l963 0120                                 l867 02B6  
+                               l859 02AE                                 l971 02D4  
+                               l949 01B0                                 l965 0124  
+                               l869 02B8                                 l973 02D8  
+                               l967 012C                                 l959 0104  
+                               l975 02DC                                 l969 0150  
+                               u200 01B0                                 u201 01AC  
+                               u210 01D6                                 u211 01D2  
+                               u220 0200                                 u221 01FC  
+                               u230 0114                                 u231 0110  
+                               u160 0070                                 u240 0150  
+                               u161 006C                                 u241 014C  
+                               u250 0180                                 u251 017A  
+                               u260 0182                                 u174 00A2  
+                               u175 009E                                 u184 00EA  
+                               u185 00E6                                 u194 0262  
+                               u195 025E                                 _ISR 0008  
+                               wreg 000FE8                        __CFG_LVP$OFF 000000  
+                              ?_ISR 0016                                _LATB 000F8A  
+                              _LATC 000F8B                                i2l95 0326  
+                              i2l98 031C                                _main 02D4  
+                              fsr2h 000FDA                                indf2 000FDF  
+                              fsr1l 000FE1                                fsr2l 000FD9  
+                              btemp 002E                                prodh 000FF4  
+                              prodl 000FF3                                start 003C  
+                      ___param_bank 000000                               ??_ISR 0016  
+                   __end_of_bTimeUp 0208                               ?_main 0016  
+                             _T0CON 000FD5                               _T3CON 000FB1  
+                             i2l105 0038                               i2l901 0020  
+                             i2l903 002E                               i2l905 0030  
+                             i2l907 0034                               i2l909 0036  
+                             i2l883 031E                               i2l885 0314  
+                             i2l893 000A                               i2l895 0018  
+                             i2l897 001A                               i2l899 001E  
+                             _TMR0H 000FD7                               _TMR0L 000FD6  
+                             _TMR3H 000FB3                               _TMR3L 000FB2  
+                             _PORTC 000F82                               _setup 02A4  
+                  __end_of_IO_setup 02F8                               tablat 000FF5  
+                             ttemp5 002F                               ttemp6 0032  
+                             ttemp7 0036                               status 000FD8  
+                             wtemp8 002F                     __initialization 026E  
+                      __end_of_main 02E8                              ??_main 0024  
+                     __activetblptr 000000                 heartbeat@ucOverFlow 0029  
+       ??_Timer_and_Interrupt_setup 0016                  bTimeUp@CurrentTime 0021  
+                            ?_setup 0016                      __CFG_WDTEN$OFF 000000  
+                            _OSCCON 000FD3                    __end_of_all_LEDs 032A  
+                            _TMR0IF 007F92                              _TMR3IF 007D09  
+                  __end_of_clr_LEDs 032C                    __end_of_get_Time 0314  
+                         ??_bTimeUp 001E                              _gbTick 002D  
+                            _get_IO 0208                              clear_0 0294  
+                            _set_IO 0040                        __pdataCOMRAM 0001  
+                            tblptrh 000FF7                              tblptrl 000FF6  
+                            tblptru 000FF8                          __accesstop 0060  
+           __end_of__initialization 029A                       ___rparam_used 000001  
+                     set_IO@ucLocal 001F           _Timer_and_Interrupt_setup 02F8  
+                    __pcstackCOMRAM 0016                       __end_of_setup 02BE  
+                         ?_IO_setup 0016                  __size_of_clr_Timer 000A  
+                __size_of_heartbeat 0086                      testing@nbFirst 0026  
+                           ??_setup 0016                             ?_get_IO 0016  
+                        _clr_Timer3 0314                             ?_set_IO 0016  
+                        ??_IO_setup 0016                           ?_all_LEDs 0016  
+                        _guc_3_Tick 002C                           ?_clr_LEDs 0016  
+                           i2u12_40 0018                             i2u12_41 0014  
+                           i2u13_40 002E                             i2u13_41 002A  
+                        _astOutputs 0004                           ?_get_Time 0016  
+                        _gucTestBit 002B                   __end_of_clr_Timer 0328  
+                           __Hparam 0000                             __Lparam 0000  
+                 __end_of_heartbeat 018A                             _bTimeUp 018A  
+                   __size_of_get_IO 0066                             __pcinit 026E  
+                           __ramtop 0600                     __size_of_set_IO 00C4  
+                           __ptext0 02D4                             __ptext1 02A4  
+                           __ptext2 0328                             __ptext3 02F8  
+                           __ptext4 02E8                             __ptext5 0104  
+                           __ptext6 0040                             __ptext7 0208  
+                           __ptext8 018A                             __ptext9 0306  
+                         _T0CONbits 000FD5                        __size_of_ISR 0034  
+                        ??_all_LEDs 0016                           _T3CONbits 000FB1  
+                        ??_clr_LEDs 0016                          ??_get_Time 0018  
+              end_of_initialization 029A                          get_IO@item 0018  
+                           postdec1 000FE5                             postdec2 000FDD  
+                           postinc0 000FEE                             postinc2 000FDE  
+                       ?_clr_Timer3 0016  __size_of_Timer_and_Interrupt_setup 000E  
+                         _TRISBbits 000F93                           _TRISCbits 000F94  
+              heartbeat@uwStartTime 0024                       __pidataCOMRAM 02BE  
+                    __end_of_get_IO 026E                      __end_of_set_IO 0104  
+                 __size_of_IO_setup 0010                 start_initialization 026E  
+                       __end_of_ISR 003C                 __size_of_clr_Timer3 000A  
+                          ??_get_IO 0019                            ??_set_IO 001A  
+                      set_IO@bValue 0019                         __pbssCOMRAM 0024  
+                 __size_of_all_LEDs 0002                    heartbeat@nbFirst 002A  
+                 __size_of_clr_LEDs 0002                   __size_of_get_Time 000E  
+                        set_IO@item 0018                           __pintcode 0008  
+                          ?_bTimeUp 001A                           _clr_Timer 031E  
+                         _heartbeat 0104                           _astInputs 0001  
+                    __size_of_setup 001A                          ?_clr_Timer 0016  
+                      ??_clr_Timer3 0016                          ?_heartbeat 0016  
+                          _IO_setup 02E8                           copy_data0 0282  
+                __end_of_clr_Timer3 031E                            __Hrparam 0000  
+                          __Lrparam 0000                    __size_of_bTimeUp 007E  
+                          bTimeUp@b 0020                            _all_LEDs 0328  
+                          _clr_LEDs 032A                heartbeat@bHeartState 0023  
+                          __ptext10 032A                            __ptext12 0314  
+                          __ptext13 031E                            _get_Time 0306  
+                  bTimeUp@StartTime 001A                       __size_of_main 0014  
+                          get_IO@IO 0016                         ??_clr_Timer 0016  
+                          int$flags 002E                         ??_heartbeat 0023  
+        ?_Timer_and_Interrupt_setup 0016                          _INTCONbits 000FF2  
+                          intlevel2 0000                            set_IO@IO 0016  
+                          testing@b 0028   __end_of_Timer_and_Interrupt_setup 0306  
+                     bTimeUp@Period 001C                   __CFG_FOSC$INTIO67 000000  
