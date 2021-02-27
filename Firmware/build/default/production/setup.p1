@@ -132,8 +132,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4301
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k20.h: 4301: extern volatile T3CONbits_t T3CONbits __attribute__((address(0xFB1)));
 [v _T3CONbits `VS168 ~T0 @X0 0 e@4017 ]
-"27 ./leds.h
-[; ;./leds.h: 27: extern void all_LEDs (void);
+"29 ./leds.h
+[; ;./leds.h: 29: extern void all_LEDs (void);
 [v _all_LEDs `(v ~T0 @X0 0 ef ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k20.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k20.h: 54: __asm("SSPMSK equ 0F77h");
@@ -582,6 +582,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "33
 [; ;./setup.h: 33: unsigned char gucTestBit;
 [v _gucTestBit `uc ~T0 @X0 1 e ]
+"24 ./leds.h
+[; ;./leds.h: 24: unsigned long gLED_word;
+[v _gLED_word `ul ~T0 @X0 1 e ]
 "9 setup.c
 [; ;setup.c: 9: void set_IO (struct gstGPIO *IO, unsigned char item,unsigned char bValue)
 [v _set_IO `(v ~T0 @X0 1 ef3`*S303`uc`uc ]
@@ -751,10 +754,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;setup.c: 75: }
 [e :UE 309 ]
 }
-[v F3037 `(v ~T0 @X0 1 tf ]
+[v F3038 `(v ~T0 @X0 1 tf ]
 "77
 [; ;setup.c: 77: void clr_Timer (void)
-[v _clr_Timer `TF3037 ~T0 @X0 1 e ]
+[v _clr_Timer `TF3038 ~T0 @X0 1 e ]
 "78
 [; ;setup.c: 78: {
 {
@@ -842,10 +845,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;setup.c: 105: }
 [e :UE 312 ]
 }
-[v F3041 `(Vus ~T0 @X0 1 tf ]
+[v F3042 `(Vus ~T0 @X0 1 tf ]
 "107
 [; ;setup.c: 107: __attribute__((inline)) volatile unsigned short get_Time(void)
-[v _get_Time `VTF3041 ~T0 @X0 1 e ]
+[v _get_Time `VTF3042 ~T0 @X0 1 e ]
 "108
 [; ;setup.c: 108: {
 {
@@ -978,32 +981,32 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "159
 [; ;setup.c: 159:     static unsigned char nbFirst;
-[v F3049 `uc ~T0 @X0 1 s nbFirst ]
+[v F3050 `uc ~T0 @X0 1 s nbFirst ]
 "160
 [; ;setup.c: 160:     static unsigned short uwStartTime;
-[v F3050 `us ~T0 @X0 1 s uwStartTime ]
+[v F3051 `us ~T0 @X0 1 s uwStartTime ]
 "161
 [; ;setup.c: 161:     static unsigned char ucOverFlow;
-[v F3051 `uc ~T0 @X0 1 s ucOverFlow ]
+[v F3052 `uc ~T0 @X0 1 s ucOverFlow ]
 "162
 [; ;setup.c: 162:     unsigned char bHeartState = 0;
 [v _bHeartState `uc ~T0 @X0 1 a ]
 [e = _bHeartState -> -> 0 `i `uc ]
 "164
 [; ;setup.c: 164:     if(!nbFirst)
-[e $ ! ! != -> F3049 `i -> 0 `i 323  ]
+[e $ ! ! != -> F3050 `i -> 0 `i 323  ]
 "165
 [; ;setup.c: 165:     {
 {
 "166
 [; ;setup.c: 166:         uwStartTime = get_Time();
-[e = F3050 ( _get_Time ..  ]
+[e = F3051 ( _get_Time ..  ]
 "167
 [; ;setup.c: 167:         ucOverFlow = gbTick;
-[e = F3051 _gbTick ]
+[e = F3052 _gbTick ]
 "168
 [; ;setup.c: 168:         nbFirst = 1;
-[e = F3049 -> -> 1 `i `uc ]
+[e = F3050 -> -> 1 `i `uc ]
 "169
 [; ;setup.c: 169:     }
 }
@@ -1016,7 +1019,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "172
 [; ;setup.c: 172:         if(bTimeUp(uwStartTime, 10000))
-[e $ ! != -> ( _bTimeUp (2 , F3050 -> -> 10000 `i `us `i -> 0 `i 325  ]
+[e $ ! != -> ( _bTimeUp (2 , F3051 -> -> 10000 `i `us `i -> 0 `i 325  ]
 "173
 [; ;setup.c: 173:         {
 {
@@ -1053,28 +1056,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "190
 [; ;setup.c: 190:     static unsigned char b;
-[v F3055 `uc ~T0 @X0 1 s b ]
+[v F3056 `uc ~T0 @X0 1 s b ]
 "191
 [; ;setup.c: 191:     static unsigned char ucLocalTicks;
-[v F3056 `uc ~T0 @X0 1 s ucLocalTicks ]
+[v F3057 `uc ~T0 @X0 1 s ucLocalTicks ]
 "192
 [; ;setup.c: 192:     static unsigned char nbFirst;
-[v F3057 `uc ~T0 @X0 1 s nbFirst ]
+[v F3058 `uc ~T0 @X0 1 s nbFirst ]
 "193
 [; ;setup.c: 193:     if(!nbFirst)
-[e $ ! ! != -> F3057 `i -> 0 `i 327  ]
+[e $ ! ! != -> F3058 `i -> 0 `i 327  ]
 "194
 [; ;setup.c: 194:     {
 {
 "195
 [; ;setup.c: 195:         b = 1;
-[e = F3055 -> -> 1 `i `uc ]
+[e = F3056 -> -> 1 `i `uc ]
 "196
 [; ;setup.c: 196:         nbFirst = 1;
-[e = F3057 -> -> 1 `i `uc ]
+[e = F3058 -> -> 1 `i `uc ]
 "197
 [; ;setup.c: 197:         ucLocalTicks = guc_3_Tick;
-[e = F3056 _guc_3_Tick ]
+[e = F3057 _guc_3_Tick ]
 "198
 [; ;setup.c: 198:         T3CONbits.TMR3ON = 1;
 [e = . . _T3CONbits 1 0 -> -> 1 `i `uc ]
@@ -1084,7 +1087,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 327 ]
 "200
 [; ;setup.c: 200:     if(ucLocalTicks != guc_3_Tick)
-[e $ ! != -> F3056 `i -> _guc_3_Tick `i 328  ]
+[e $ ! != -> F3057 `i -> _guc_3_Tick `i 328  ]
 "201
 [; ;setup.c: 201:     {
 {
@@ -1093,17 +1096,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _T3CONbits 1 0 -> -> 0 `i `uc ]
 "203
 [; ;setup.c: 203:         b = 0;
-[e = F3055 -> -> 0 `i `uc ]
+[e = F3056 -> -> 0 `i `uc ]
 "204
 [; ;setup.c: 204:         nbFirst = 0;
-[e = F3057 -> -> 0 `i `uc ]
+[e = F3058 -> -> 0 `i `uc ]
 "205
 [; ;setup.c: 205:     }
 }
 [e :U 328 ]
 "206
 [; ;setup.c: 206:     set_IO(astOutputs,TargetBit,b);
-[e ( _set_IO (3 , , &U _astOutputs _TargetBit F3055 ]
+[e ( _set_IO (3 , , &U _astOutputs _TargetBit F3056 ]
 "208
 [; ;setup.c: 208: }
 [e :UE 326 ]

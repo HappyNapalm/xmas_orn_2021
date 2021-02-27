@@ -446,6 +446,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "33
 [; ;./setup.h: 33: unsigned char gucTestBit;
 [v _gucTestBit `uc ~T0 @X0 1 e ]
+"24 ./leds.h
+[; ;./leds.h: 24: unsigned long gLED_word;
+[v _gLED_word `ul ~T0 @X0 1 e ]
 "9 leds.c
 [; ;leds.c: 9: void clr_LEDs (void)
 [v _clr_LEDs `(v ~T0 @X0 1 ef ]

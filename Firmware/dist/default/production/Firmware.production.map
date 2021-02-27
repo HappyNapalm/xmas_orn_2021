@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v2.10\pic\dat\en_msgs.txt \
   -cs -h+dist/default/production\Firmware.production.sym \
   --cmf=dist/default/production\Firmware.production.cmf -z -Q18F45K20 \
-  -oC:\Users\churc\AppData\Local\Temp\sagg.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\churc\AppData\Local\Temp\s1tg.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Firmware.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=060h-05FFh -pstack=STACK -ACODE=00h-07FFFh \
   -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
@@ -22,7 +22,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\churc\AppData\Local\Temp\sagg.o \
+  C:\Users\churc\AppData\Local\Temp\s1tg.o \
   dist/default/production\Firmware.production.o 
 
 Object code version is 3.11
@@ -35,14 +35,14 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\churc\AppData\Local\Temp\sagg.o
+C:\Users\churc\AppData\Local\Temp\s1tg.o
                 init                                 3C       3C        4        4       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
 dist/default/production\Firmware.production.o
                 intcode                               8        8       34        4       0
-                temp                                 2E       2E        1        1       1
+                temp                                 32       32        1        1       1
                 text13                              31E      31E        A      16A       0
                 text12                              314      314        A      16A       0
                 text10                              32A      32A        2      16A       0
@@ -56,9 +56,9 @@ dist/default/production\Firmware.production.o
                 text2                               328      328        2      16A       0
                 text1                               2A4      2A4       1A        4       0
                 text0                               2D4      2D4       14      16A       0
-                cstackCOMRAM                         16       16        E        1       1
+                cstackCOMRAM                         24       24        E        1       1
                 dataCOMRAM                            1        1       15        1       1
-                bssCOMRAM                            24       24        A        1       1
+                bssCOMRAM                            16       16        E        1       1
                 cinit                               26E      26E       36        4       0
                 idataCOMRAM                         2BE      2BE       15        4       0
 
@@ -92,10 +92,10 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   MEDIUMCONST    
 
         CLASS   COMRAM         
-                temp                                 2E       2E        1         1
-                cstackCOMRAM                         16       16        E         1
+                temp                                 32       32        1         1
+                cstackCOMRAM                         24       24        E         1
                 dataCOMRAM                            1        1       15         1
-                bssCOMRAM                            24       24        A         1
+                bssCOMRAM                            16       16        E         1
 
         CLASS   ABS1           
 
@@ -132,7 +132,7 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                dataCOMRAM                     000001  00002E  00002F         1       1  COMRAM  
+                dataCOMRAM                     000001  000032  000033         1       1  COMRAM  
                 intcode                        000008  0002CB  0002D3         4       0  CODE    
                 text0                          0002D4  000058  00032C       16A       0  CODE    
                 idloc                          200000  000008  200008    200000       0  IDLOC   
@@ -148,11 +148,11 @@ UNUSED ADDRESS RANGES
         BANK3            000300-0003FF              100
         BANK4            000400-0004FF              100
         BANK5            000500-0005FF              100
-        BIGRAM           00002F-0005FF              5D1
+        BIGRAM           000033-0005FF              5CD
         CODE             000004-000007                4
                          0002D3-0002D3                1
                          00032C-007FFF             7CD4
-        COMRAM           00002F-00005F               31
+        COMRAM           000033-00005F               2D
         CONST            000004-000007                4
                          0002D3-0002D3                1
                          00032C-007FFF             7CD4
@@ -165,7 +165,7 @@ UNUSED ADDRESS RANGES
 
                                   Symbol Table
 
-?_get_Time                          cstackCOMRAM 000016
+?_get_Time                          cstackCOMRAM 000024
 _INTCONbits                         (abs)        000FF2
 _IO_setup                           text4        0002E8
 _ISR                                intcode      000008
@@ -242,11 +242,11 @@ __Hrparam                           rparam       000000
 __Hsfr                              sfr          000000
 __Hsmallconst                       smallconst   000000
 __Hspace_0                          (abs)        30000E
-__Hspace_1                          (abs)        00002F
+__Hspace_1                          (abs)        000033
 __Hspace_2                          (abs)        000000
 __Hstack                            stack        000000
 __Hstruct                           struct       000000
-__Htemp                             temp         00002F
+__Htemp                             temp         000033
 __Htext                             text         000000
 __Htext0                            text0        000000
 __Htext1                            text1        000000
@@ -318,7 +318,7 @@ __Lspace_1                          (abs)        000000
 __Lspace_2                          (abs)        000000
 __Lstack                            stack        000000
 __Lstruct                           struct       000000
-__Ltemp                             temp         00002E
+__Ltemp                             temp         000032
 __Ltext                             text         000000
 __Ltext0                            text0        000000
 __Ltext1                            text1        000000
@@ -334,7 +334,7 @@ __Ltext7                            text7        000000
 __Ltext8                            text8        000000
 __Ltext9                            text9        000000
 __S0                                (abs)        30000E
-__S1                                (abs)        00002F
+__S1                                (abs)        000033
 __S2                                (abs)        000000
 ___inthi_sp                         stack        000000
 ___intlo_sp                         stack        000000
@@ -360,9 +360,9 @@ __end_of_set_IO                     text6        000104
 __end_of_setup                      text1        0002BE
 __initialization                    cinit        00026E
 __mediumconst                       mediumconst  000000
-__pbssCOMRAM                        bssCOMRAM    000024
+__pbssCOMRAM                        bssCOMRAM    000016
 __pcinit                            cinit        00026E
-__pcstackCOMRAM                     cstackCOMRAM 000016
+__pcstackCOMRAM                     cstackCOMRAM 000024
 __pdataCOMRAM                       dataCOMRAM   000001
 __pidataCOMRAM                      idataCOMRAM  0002BE
 __pintcode                          intcode      000008
@@ -402,47 +402,48 @@ _bTimeUp                            text8        00018A
 _clr_LEDs                           text10       00032A
 _clr_Timer                          text13       00031E
 _clr_Timer3                         text12       000314
-_gbTick                             bssCOMRAM    00002D
+_gLED_word                          bssCOMRAM    000016
+_gbTick                             bssCOMRAM    000023
 _get_IO                             text7        000208
 _get_Time                           text9        000306
-_gucTestBit                         bssCOMRAM    00002B
-_guc_3_Tick                         bssCOMRAM    00002C
+_gucTestBit                         bssCOMRAM    000021
+_guc_3_Tick                         bssCOMRAM    000022
 _heartbeat                          text5        000104
 _main                               text0        0002D4
 _set_IO                             text6        000040
 _setup                              text1        0002A4
-bTimeUp@CurrentTime                 cstackCOMRAM 000021
-bTimeUp@Period                      cstackCOMRAM 00001C
-bTimeUp@StartTime                   cstackCOMRAM 00001A
-bTimeUp@b                           cstackCOMRAM 000020
-btemp                               temp         00002E
+bTimeUp@CurrentTime                 cstackCOMRAM 00002F
+bTimeUp@Period                      cstackCOMRAM 00002A
+bTimeUp@StartTime                   cstackCOMRAM 000028
+bTimeUp@b                           cstackCOMRAM 00002E
+btemp                               temp         000032
 end_of_initialization               cinit        00029A
-get_IO@IO                           cstackCOMRAM 000016
-get_IO@item                         cstackCOMRAM 000018
-heartbeat@bHeartState               cstackCOMRAM 000023
-heartbeat@nbFirst                   bssCOMRAM    00002A
-heartbeat@ucOverFlow                bssCOMRAM    000029
-heartbeat@uwStartTime               bssCOMRAM    000024
-int$flags                           temp         00002E
+get_IO@IO                           cstackCOMRAM 000024
+get_IO@item                         cstackCOMRAM 000026
+heartbeat@bHeartState               cstackCOMRAM 000031
+heartbeat@nbFirst                   bssCOMRAM    000020
+heartbeat@ucOverFlow                bssCOMRAM    00001F
+heartbeat@uwStartTime               bssCOMRAM    00001A
+int$flags                           temp         000032
 intlevel0                           text         000000
 intlevel1                           text         000000
 intlevel2                           text         000000
 intlevel3                           text         000000
-set_IO@IO                           cstackCOMRAM 000016
-set_IO@bValue                       cstackCOMRAM 000019
-set_IO@item                         cstackCOMRAM 000018
-set_IO@ucLocal                      cstackCOMRAM 00001F
+set_IO@IO                           cstackCOMRAM 000024
+set_IO@bValue                       cstackCOMRAM 000027
+set_IO@item                         cstackCOMRAM 000026
+set_IO@ucLocal                      cstackCOMRAM 00002D
 stackhi                             (abs)        0005FF
 stacklo                             (abs)        000060
 start                               init         00003C
 start_initialization                cinit        00026E
-testing@b                           bssCOMRAM    000028
-testing@nbFirst                     bssCOMRAM    000026
-testing@ucLocalTicks                bssCOMRAM    000027
-ttemp5                              temp         00002F
-ttemp6                              temp         000032
-ttemp7                              temp         000036
-wtemp8                              temp         00002F
+testing@b                           bssCOMRAM    00001E
+testing@nbFirst                     bssCOMRAM    00001C
+testing@ucLocalTicks                bssCOMRAM    00001D
+ttemp5                              temp         000033
+ttemp6                              temp         000036
+ttemp7                              temp         00003A
+wtemp8                              temp         000033
 
 
 FUNCTION INFORMATION:

@@ -4998,7 +4998,11 @@ __attribute__((inline)) volatile unsigned short get_Time(void);
 # 13 "main.c" 2
 
 # 1 "./leds.h" 1
-# 26 "./leds.h"
+# 24 "./leds.h"
+unsigned long gLED_word;
+
+
+
 extern void clr_LEDs (void);
 extern void all_LEDs (void);
 extern unsigned short get_LEDs (void);

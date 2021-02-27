@@ -30,13 +30,6 @@ struct gstGPIO astInputs[] = {
     {&PORTC, 1}, /* Button */
 };
 
-#define HeartBeat 0
-#define STORAGE_CLK 1
-#define SHIFT_CLK 2
-#define nOE 3
-#define nMEM_RES 4
-#define DATA_OUT 5
-
 struct gstGPIO astOutputs[] = {
     {&LATC, 0}, /* HB */
     {&LATC, 5}, /* STORAGE_CLK */

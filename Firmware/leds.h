@@ -21,6 +21,8 @@ extern "C" {
 
 
 //extern const struct gstLEDs;
+unsigned long gLED_word;
+#define MAX_LEDS 24
 
 //Functions
 extern void clr_LEDs (void);

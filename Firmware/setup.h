@@ -19,7 +19,12 @@ extern "C" {
 }
 #endif
 //global variables
-
+#define HeartBeat 0
+#define STORAGE_CLK 1
+#define SHIFT_CLK 2
+#define nOE 3
+#define nMEM_RES 4
+#define DATA_OUT 5
 //@About: Allows for IO tables to be made
 struct gstGPIO{
     volatile unsigned char *port;
